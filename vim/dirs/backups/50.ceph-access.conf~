@@ -1,0 +1,13 @@
+[ceph-mon-access]
+Type = Access
+Protocol = TCP
+Port = 6789
+Policy Order = ["DROP", "ACCEPT"]
+Match 1  = { "dev": "eth1" }
+
+[ceph-osd-access]
+Type = Access
+Protocol = TCP
+Port = 6800:7100
+Policy Order = ["DROP", "ACCEPT"]
+Match 1  = { "dev": "eth1" }

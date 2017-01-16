@@ -1,0 +1,39 @@
+---
+#- include: inventory
+- hosts: osctrl
+  become: yes
+  tags: osctrl
+  environment:
+      OS_TENANT_NAME: admin
+      OS_USERNAME: admin
+      OS_PASSWORD: OpenStackAdmin
+      OS_AUTH_URL: "http://localhost:35357/v2.0"
+      OS_IMAGE_API_VERSION: 2
+      OS_VOLUME_API_VERSION: 2
+  tasks:
+    - name: exec cmds as admin
+      command: nova {{ args }}
+      tags: nova
+      register: hello
+    - debug: msg={{ hello.stdout }}
+    - debug: msg={{ hello.stderr }}
+
+
+# - hosts: hydra
+#   become: yes
+#   tags: ceph.conf
+#   tasks:
+#     - name: test host tag
+#       ping:
+#    - name: test pipe
+#      command: for i in `ps aux | grep osd | awk '{print $2}'`; do echo $i hello; done
+#      tag: pipe
+#    - name: copy test
+#      copy: src=/etc/hosts dest=/home/gzcaiwenjie/hosts1
+#            owner=root group=root mode=777
+#    - name: copy test
+#      copy: src=/etc/hosts dest=/home/gzcaiwenjie/hosts2
+#            owner=root group=root mode=777
+#    - name: copy test
+#      copy: src=hello dest=/home/gzcaiwenjie
+#            owner=root group=root mode=777

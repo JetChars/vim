@@ -1,0 +1,27 @@
+# Text File
+# AUTHOR:   JetChars
+# FILE:     roles/rgw/tasks/s3_cgroup.yml
+# ROLE:     TODO (some explanation)
+# CREATED:  2016-12-01 15:33:58
+# MODIFIED: 2016-12-01 15:58:56
+
+- apt: name=cgroup-bin state=present
+- command: grep cgroup /etc/default/grub
+  register: is_grub_changed
+  ignore_errors: True
+- debug: msg={{ rgw_id }}
+- lineinfile: >
+    dest=/etc/default/grub backup=yes
+    regexp=^GRUB_CMDLINE_LINUX=
+    line=GRUB_CMDLINE_LINUX="clocksource=tsc consoleblank=0 ipv6.disable=1 cgroup_enable=memory"
+  when:
+    - is_grub_changed | failed
+- raw: update-grub2 && update-grub
+  when: is_grub_changed | succeeded
+- copy: >
+    src="{{ role_path }}/files/scripts/set_cache_dir.sh"
+    dest=/home/ceph/scripts
+- lineinfile: >
+    dest=/etc/rc.local backup=yes
+    create=yes
+    line="bash /home/ceph/script/set_cache_dir.sh"

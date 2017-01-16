@@ -1,0 +1,8 @@
+# Text File
+# AUTHOR:   JetChars
+# FILE:     roles/rgw/vars/main.yml
+# ROLE:     TODO (some explanation)
+# CREATED:  2016-11-30 15:29:07
+# MODIFIED: 2016-11-30 18:50:34
+
+rgw_id: "{{ inventory_hostname | regex_replace('^cld-radosgw(.*)-.*$', '\\1') }}"

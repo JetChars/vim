@@ -1,0 +1,96 @@
+Host jebian
+    HostName        10.249.41.142
+    Port            22
+    User            jet
+
+Host    wenjie
+    HostName        192.168.199.116
+    Port            22
+    User            wenjieca
+    IdentityFile    ~/.ssh/id_rsa
+Host    test01
+    HostName        10.63.48.168
+    Port            32200
+    User            gzcaiwenjie
+    IdentityFile    ~/.ssh/id_rsa
+Host    test02
+    HostName        10.63.48.169
+    Port            32200
+    User            gzcaiwenjie
+    IdentityFile    ~/.ssh/id_rsa
+Host    test03
+    HostName        10.63.48.170
+    Port            32200
+    User            gzcaiwenjie
+    IdentityFile    ~/.ssh/id_rsa
+Host    test04
+    HostName        10.63.48.171
+    Port            32200
+    User            gzcaiwenjie
+    IdentityFile    ~/.ssh/id_rsa
+Host    test05
+    HostName        10.63.48.172
+    Port            32200
+    User            gzcaiwenjie
+    IdentityFile    ~/.ssh/id_rsa
+Host    test06
+    HostName        10.63.48.173
+    Port            32200
+    User            gzcaiwenjie
+    IdentityFile    ~/.ssh/id_rsa
+Host    test07
+    HostName        10.63.48.174
+    Port            32200
+    User            gzcaiwenjie
+    IdentityFile    ~/.ssh/id_rsa
+Host    mini00
+    HostName        10.63.48.183
+    Port            32200
+    User            gzcaiwenjie
+    IdentityFile    ~/.ssh/id_rsa
+Host    mini01
+    HostName        10.63.48.189
+    Port            32200
+    User            gzcaiwenjie
+    IdentityFile    ~/.ssh/id_rsa
+Host    mini02
+    HostName        10.63.48.190
+    Port            32200
+    User            gzcaiwenjie
+    IdentityFile    ~/.ssh/id_rsa
+Host    mini03
+    HostName        10.63.48.191
+    Port            32200
+    User            gzcaiwenjie
+    IdentityFile    ~/.ssh/id_rsa
+Host    mini04
+    HostName        10.63.48.192
+    Port            32200
+    User            gzcaiwenjie
+    IdentityFile    ~/.ssh/id_rsa
+Host    aws
+    HostName        54.191.203.175
+    Port            22
+    User            ec2-user
+    IdentityFile    ~/Downloads/wenjie.pem.txt
+
+Host  centos
+    Hostname 192.168.56.101
+    Port 22
+    User root
+Host    s3
+    HostName        106.2.71.236
+    Port            32200
+    User            gzcaiwenjie
+    IdentityFile    ~/.ssh/id_rsa
+Host *
+    Port 32200
+    User gzcaiwenjie
+    IdentityFile    ~/.ssh/id_rsa
+Host velatest
+    Hostname 10.63.32.31
+    Port 32200
+    User gzcaiwenjie
+    ProxyCommand ssh -q %h:%p 10.120.166.107
+    IdentityFile ~/.ssh/id_rsa
+

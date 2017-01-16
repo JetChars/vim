@@ -1,0 +1,47 @@
+-- Lua File
+-- AUTHOR:   JetChars
+-- FILE:     roles/rgw/files/confs/nginx/access.lua
+-- ROLE:     TODO (some explanation)
+-- CREATED:  2016-12-02 14:53:52
+-- MODIFIED: 2016-12-02 14:54:29
+
+local request_method = ngx.var.request_method
+local uri = ngx.var.uri
+local ip = ngx.var.remote_addr
+local server_name = ngx.var.host
+local args = ngx.var.args
+local admin_from, admin_to, err = ngx.re.find(uri,"^/admin/?")
+local bucketname_check, bucketname_err = ngx.re.match(uri,"^/[0-9a-zA-Z-]+/$")
+local servername_check, servername_err = ngx.re.match(server_name,"^s3.nie.netease.com$")
+local url_check, url_err = ngx.re.match(uri,"^/$")
+local admin_white_ip_list = {["127.0.0.1"]=true,["xx.xx.xx.xx"]=true} #根据实际情况添加白名单
+
+
+-- 对白名单用户开放bucket的新建和删除权限，其他用于一律返回405错误
+if true ~= admin_white_ip_list[ip] then
+   if request_method == "PUT" or request_method == "DELETE" then
+       if not args then
+           if servername_check then
+               if bucketname_check then
+                   ngx.exit(ngx.HTTP_NOT_ALLOWED)
+               end
+           else
+               if bucketname_check then
+                   ngx.exit(ngx.HTTP_NOT_ALLOWED)
+               end
+               if url_check then
+                   ngx.exit(ngx.HTTP_NOT_ALLOWED)
+               end
+           end
+       end
+   end
+end
+
+
+-- 对白名单用户开放admin 接口权限，发生异常访问会记录IP同时返回403错误
+if admin_from then
+   if true ~= admin_white_ip_list[ip] then
+       ngx.log(ngx.ERR, "get bad boy IP: ", ip)
+       ngx.exit(ngx.HTTP_FORBIDDEN)
+   end
+end

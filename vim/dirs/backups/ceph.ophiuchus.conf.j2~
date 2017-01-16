@@ -1,0 +1,3605 @@
+[global]
+        ;cluster name: 31-Ophiuchus
+        ;cluster's global fsid.
+        fsid = 9d7bdf8d-6cb2-4fd4-9dc3-1301e197ae73
+        ;open auth.
+        auth cluster required = cephx
+        auth service required = cephx
+        auth client required = cephx
+        ;global pid & log setting.
+        pid file = /home/ceph/var/run/$name.pid
+        log file = /home/ceph/log/$cluster-$name.log
+        mon osd nearfull ratio = 0.85
+        mon osd full ratio = 0.95
+        admin socket = /home/ceph/var/run/$cluster-$name.asok
+        osd pool default size = 2
+        osd pool default min size = 1
+
+[mon]
+        keyring = /home/ceph/var/lib/$type/$cluster-$id/keyring
+        mon data = /home/ceph/var/lib/$type/$cluster-$id
+        mon cluster log file = /home/ceph/log/$cluster.log
+
+
+
+[mon.a]
+        host = cld-mon1-31
+        mon addr = 10.200.9.251:6789
+        user = ceph
+
+[mon.b]
+        host = cld-mon2-31
+        mon addr = 10.200.9.252:6789
+        user = ceph
+
+[mon.c]
+        host = cld-mon3-31
+        mon addr = 10.200.9.253:6789
+        user = ceph
+
+[osd]
+        keyring = /home/ceph/var/lib/$type/$cluster-$id/keyring
+        osd data = /home/ceph/var/lib/$type/$cluster-$id
+        osd journal = /home/ceph/var/lib/$type/$cluster-$id/journal
+        osd journal size = 10000
+        osd mkfs type = xfs
+        osd mount options xfs = rw,noatime,nodiratime,inode64,logbsize=256k,delaylog
+        osd backfill full ratio = 0.92
+        osd failsafe full ratio = 0.95
+        osd failsafe nearfull ratio = 0.85
+        osd max backfills = 1
+        osd crush update on start = false
+
+################################## OSD in 10.200.9.11 ###################################
+[osd.0]
+        host = cld-osd1-31
+        addr = 10.200.9.11
+        user = ceph
+        devs = /disk/link/osd-0/data
+        osd journal = /disk/link/osd-0/journal
+[osd.1]
+        host = cld-osd1-31
+        addr = 10.200.9.11
+        user = ceph
+        devs = /disk/link/osd-1/data
+        osd journal = /disk/link/osd-1/journal
+[osd.2]
+        host = cld-osd1-31
+        addr = 10.200.9.11
+        user = ceph
+        devs = /disk/link/osd-2/data
+        osd journal = /disk/link/osd-2/journal
+[osd.3]
+        host = cld-osd1-31
+        addr = 10.200.9.11
+        user = ceph
+        devs = /disk/link/osd-3/data
+        osd journal = /disk/link/osd-3/journal
+[osd.4]
+        host = cld-osd1-31
+        addr = 10.200.9.11
+        user = ceph
+        devs = /disk/link/osd-4/data
+        osd journal = /disk/link/osd-4/journal
+[osd.5]
+        host = cld-osd1-31
+        addr = 10.200.9.11
+        user = ceph
+        devs = /disk/link/osd-5/data
+        osd journal = /disk/link/osd-5/journal
+[osd.6]
+        host = cld-osd1-31
+        addr = 10.200.9.11
+        user = ceph
+        devs = /disk/link/osd-6/data
+        osd journal = /disk/link/osd-6/journal
+[osd.7]
+        host = cld-osd1-31
+        addr = 10.200.9.11
+        user = ceph
+        devs = /disk/link/osd-7/data
+        osd journal = /disk/link/osd-7/journal
+[osd.8]
+        host = cld-osd1-31
+        addr = 10.200.9.11
+        user = ceph
+        devs = /disk/link/osd-8/data
+        osd journal = /disk/link/osd-8/journal
+[osd.9]
+        host = cld-osd1-31
+        addr = 10.200.9.11
+        user = ceph
+        devs = /disk/link/osd-9/data
+        osd journal = /disk/link/osd-9/journal
+[osd.10]
+        host = cld-osd1-31
+        addr = 10.200.9.11
+        user = ceph
+        devs = /disk/link/osd-10/data
+        osd journal = /disk/link/osd-10/journal
+[osd.11]
+        host = cld-osd1-31
+        addr = 10.200.9.11
+        user = ceph
+        devs = /disk/link/osd-11/data
+        osd journal = /disk/link/osd-11/journal
+
+################################## OSD in 10.200.9.12 ###################################
+[osd.12]
+        host = cld-osd2-31
+        addr = 10.200.9.12
+        user = ceph
+        devs = /disk/link/osd-12/data
+        osd journal = /disk/link/osd-12/journal
+[osd.13]
+        host = cld-osd2-31
+        addr = 10.200.9.12
+        user = ceph
+        devs = /disk/link/osd-13/data
+        osd journal = /disk/link/osd-13/journal
+[osd.14]
+        host = cld-osd2-31
+        addr = 10.200.9.12
+        user = ceph
+        devs = /disk/link/osd-14/data
+        osd journal = /disk/link/osd-14/journal
+[osd.15]
+        host = cld-osd2-31
+        addr = 10.200.9.12
+        user = ceph
+        devs = /disk/link/osd-15/data
+        osd journal = /disk/link/osd-15/journal
+[osd.16]
+        host = cld-osd2-31
+        addr = 10.200.9.12
+        user = ceph
+        devs = /disk/link/osd-16/data
+        osd journal = /disk/link/osd-16/journal
+[osd.17]
+        host = cld-osd2-31
+        addr = 10.200.9.12
+        user = ceph
+        devs = /disk/link/osd-17/data
+        osd journal = /disk/link/osd-17/journal
+[osd.18]
+        host = cld-osd2-31
+        addr = 10.200.9.12
+        user = ceph
+        devs = /disk/link/osd-18/data
+        osd journal = /disk/link/osd-18/journal
+[osd.19]
+        host = cld-osd2-31
+        addr = 10.200.9.12
+        user = ceph
+        devs = /disk/link/osd-19/data
+        osd journal = /disk/link/osd-19/journal
+[osd.20]
+        host = cld-osd2-31
+        addr = 10.200.9.12
+        user = ceph
+        devs = /disk/link/osd-20/data
+        osd journal = /disk/link/osd-20/journal
+[osd.21]
+        host = cld-osd2-31
+        addr = 10.200.9.12
+        user = ceph
+        devs = /disk/link/osd-21/data
+        osd journal = /disk/link/osd-21/journal
+[osd.22]
+        host = cld-osd2-31
+        addr = 10.200.9.12
+        user = ceph
+        devs = /disk/link/osd-22/data
+        osd journal = /disk/link/osd-22/journal
+[osd.23]
+        host = cld-osd2-31
+        addr = 10.200.9.12
+        user = ceph
+        devs = /disk/link/osd-23/data
+        osd journal = /disk/link/osd-23/journal
+
+################################## OSD in 10.200.9.13 ###################################
+[osd.24]
+        host = cld-osd3-31
+        addr = 10.200.9.13
+        user = ceph
+        devs = /disk/link/osd-24/data
+        osd journal = /disk/link/osd-24/journal
+[osd.25]
+        host = cld-osd3-31
+        addr = 10.200.9.13
+        user = ceph
+        devs = /disk/link/osd-25/data
+        osd journal = /disk/link/osd-25/journal
+[osd.26]
+        host = cld-osd3-31
+        addr = 10.200.9.13
+        user = ceph
+        devs = /disk/link/osd-26/data
+        osd journal = /disk/link/osd-26/journal
+[osd.27]
+        host = cld-osd3-31
+        addr = 10.200.9.13
+        user = ceph
+        devs = /disk/link/osd-27/data
+        osd journal = /disk/link/osd-27/journal
+[osd.28]
+        host = cld-osd3-31
+        addr = 10.200.9.13
+        user = ceph
+        devs = /disk/link/osd-28/data
+        osd journal = /disk/link/osd-28/journal
+[osd.29]
+        host = cld-osd3-31
+        addr = 10.200.9.13
+        user = ceph
+        devs = /disk/link/osd-29/data
+        osd journal = /disk/link/osd-29/journal
+[osd.30]
+        host = cld-osd3-31
+        addr = 10.200.9.13
+        user = ceph
+        devs = /disk/link/osd-30/data
+        osd journal = /disk/link/osd-30/journal
+[osd.31]
+        host = cld-osd3-31
+        addr = 10.200.9.13
+        user = ceph
+        devs = /disk/link/osd-31/data
+        osd journal = /disk/link/osd-31/journal
+[osd.32]
+        host = cld-osd3-31
+        addr = 10.200.9.13
+        user = ceph
+        devs = /disk/link/osd-32/data
+        osd journal = /disk/link/osd-32/journal
+[osd.33]
+        host = cld-osd3-31
+        addr = 10.200.9.13
+        user = ceph
+        devs = /disk/link/osd-33/data
+        osd journal = /disk/link/osd-33/journal
+[osd.34]
+        host = cld-osd3-31
+        addr = 10.200.9.13
+        user = ceph
+        devs = /disk/link/osd-34/data
+        osd journal = /disk/link/osd-34/journal
+[osd.35]
+        host = cld-osd3-31
+        addr = 10.200.9.13
+        user = ceph
+        devs = /disk/link/osd-35/data
+        osd journal = /disk/link/osd-35/journal
+
+################################## OSD in 10.200.9.14 ###################################
+[osd.36]
+        host = cld-osd4-31
+        addr = 10.200.9.14
+        user = ceph
+        devs = /disk/link/osd-36/data
+        osd journal = /disk/link/osd-36/journal
+[osd.37]
+        host = cld-osd4-31
+        addr = 10.200.9.14
+        user = ceph
+        devs = /disk/link/osd-37/data
+        osd journal = /disk/link/osd-37/journal
+[osd.38]
+        host = cld-osd4-31
+        addr = 10.200.9.14
+        user = ceph
+        devs = /disk/link/osd-38/data
+        osd journal = /disk/link/osd-38/journal
+[osd.39]
+        host = cld-osd4-31
+        addr = 10.200.9.14
+        user = ceph
+        devs = /disk/link/osd-39/data
+        osd journal = /disk/link/osd-39/journal
+[osd.40]
+        host = cld-osd4-31
+        addr = 10.200.9.14
+        user = ceph
+        devs = /disk/link/osd-40/data
+        osd journal = /disk/link/osd-40/journal
+[osd.41]
+        host = cld-osd4-31
+        addr = 10.200.9.14
+        user = ceph
+        devs = /disk/link/osd-41/data
+        osd journal = /disk/link/osd-41/journal
+[osd.42]
+        host = cld-osd4-31
+        addr = 10.200.9.14
+        user = ceph
+        devs = /disk/link/osd-42/data
+        osd journal = /disk/link/osd-42/journal
+[osd.43]
+        host = cld-osd4-31
+        addr = 10.200.9.14
+        user = ceph
+        devs = /disk/link/osd-43/data
+        osd journal = /disk/link/osd-43/journal
+[osd.44]
+        host = cld-osd4-31
+        addr = 10.200.9.14
+        user = ceph
+        devs = /disk/link/osd-44/data
+        osd journal = /disk/link/osd-44/journal
+[osd.45]
+        host = cld-osd4-31
+        addr = 10.200.9.14
+        user = ceph
+        devs = /disk/link/osd-45/data
+        osd journal = /disk/link/osd-45/journal
+[osd.46]
+        host = cld-osd4-31
+        addr = 10.200.9.14
+        user = ceph
+        devs = /disk/link/osd-46/data
+        osd journal = /disk/link/osd-46/journal
+[osd.47]
+        host = cld-osd4-31
+        addr = 10.200.9.14
+        user = ceph
+        devs = /disk/link/osd-47/data
+        osd journal = /disk/link/osd-47/journal
+
+################################## OSD in 10.200.9.15 ###################################
+[osd.48]
+        host = cld-osd5-31
+        addr = 10.200.9.15
+        user = ceph
+        devs = /disk/link/osd-48/data
+        osd journal = /disk/link/osd-48/journal
+[osd.49]
+        host = cld-osd5-31
+        addr = 10.200.9.15
+        user = ceph
+        devs = /disk/link/osd-49/data
+        osd journal = /disk/link/osd-49/journal
+[osd.50]
+        host = cld-osd5-31
+        addr = 10.200.9.15
+        user = ceph
+        devs = /disk/link/osd-50/data
+        osd journal = /disk/link/osd-50/journal
+[osd.51]
+        host = cld-osd5-31
+        addr = 10.200.9.15
+        user = ceph
+        devs = /disk/link/osd-51/data
+        osd journal = /disk/link/osd-51/journal
+[osd.52]
+        host = cld-osd5-31
+        addr = 10.200.9.15
+        user = ceph
+        devs = /disk/link/osd-52/data
+        osd journal = /disk/link/osd-52/journal
+[osd.53]
+        host = cld-osd5-31
+        addr = 10.200.9.15
+        user = ceph
+        devs = /disk/link/osd-53/data
+        osd journal = /disk/link/osd-53/journal
+[osd.54]
+        host = cld-osd5-31
+        addr = 10.200.9.15
+        user = ceph
+        devs = /disk/link/osd-54/data
+        osd journal = /disk/link/osd-54/journal
+[osd.55]
+        host = cld-osd5-31
+        addr = 10.200.9.15
+        user = ceph
+        devs = /disk/link/osd-55/data
+        osd journal = /disk/link/osd-55/journal
+[osd.56]
+        host = cld-osd5-31
+        addr = 10.200.9.15
+        user = ceph
+        devs = /disk/link/osd-56/data
+        osd journal = /disk/link/osd-56/journal
+[osd.57]
+        host = cld-osd5-31
+        addr = 10.200.9.15
+        user = ceph
+        devs = /disk/link/osd-57/data
+        osd journal = /disk/link/osd-57/journal
+[osd.58]
+        host = cld-osd5-31
+        addr = 10.200.9.15
+        user = ceph
+        devs = /disk/link/osd-58/data
+        osd journal = /disk/link/osd-58/journal
+[osd.59]
+        host = cld-osd5-31
+        addr = 10.200.9.15
+        user = ceph
+        devs = /disk/link/osd-59/data
+        osd journal = /disk/link/osd-59/journal
+
+################################## OSD in 10.200.9.16 ###################################
+[osd.60]
+        host = cld-osd6-31
+        addr = 10.200.9.16
+        user = ceph
+        devs = /disk/link/osd-60/data
+        osd journal = /disk/link/osd-60/journal
+[osd.61]
+        host = cld-osd6-31
+        addr = 10.200.9.16
+        user = ceph
+        devs = /disk/link/osd-61/data
+        osd journal = /disk/link/osd-61/journal
+[osd.62]
+        host = cld-osd6-31
+        addr = 10.200.9.16
+        user = ceph
+        devs = /disk/link/osd-62/data
+        osd journal = /disk/link/osd-62/journal
+[osd.63]
+        host = cld-osd6-31
+        addr = 10.200.9.16
+        user = ceph
+        devs = /disk/link/osd-63/data
+        osd journal = /disk/link/osd-63/journal
+[osd.64]
+        host = cld-osd6-31
+        addr = 10.200.9.16
+        user = ceph
+        devs = /disk/link/osd-64/data
+        osd journal = /disk/link/osd-64/journal
+[osd.65]
+        host = cld-osd6-31
+        addr = 10.200.9.16
+        user = ceph
+        devs = /disk/link/osd-65/data
+        osd journal = /disk/link/osd-65/journal
+[osd.66]
+        host = cld-osd6-31
+        addr = 10.200.9.16
+        user = ceph
+        devs = /disk/link/osd-66/data
+        osd journal = /disk/link/osd-66/journal
+[osd.67]
+        host = cld-osd6-31
+        addr = 10.200.9.16
+        user = ceph
+        devs = /disk/link/osd-67/data
+        osd journal = /disk/link/osd-67/journal
+[osd.68]
+        host = cld-osd6-31
+        addr = 10.200.9.16
+        user = ceph
+        devs = /disk/link/osd-68/data
+        osd journal = /disk/link/osd-68/journal
+[osd.69]
+        host = cld-osd6-31
+        addr = 10.200.9.16
+        user = ceph
+        devs = /disk/link/osd-69/data
+        osd journal = /disk/link/osd-69/journal
+[osd.70]
+        host = cld-osd6-31
+        addr = 10.200.9.16
+        user = ceph
+        devs = /disk/link/osd-70/data
+        osd journal = /disk/link/osd-70/journal
+[osd.71]
+        host = cld-osd6-31
+        addr = 10.200.9.16
+        user = ceph
+        devs = /disk/link/osd-71/data
+        osd journal = /disk/link/osd-71/journal
+
+################################## OSD in 10.200.9.17 ###################################
+[osd.72]
+        host = cld-osd7-31
+        addr = 10.200.9.17
+        user = ceph
+        devs = /disk/link/osd-72/data
+        osd journal = /disk/link/osd-72/journal
+[osd.73]
+        host = cld-osd7-31
+        addr = 10.200.9.17
+        user = ceph
+        devs = /disk/link/osd-73/data
+        osd journal = /disk/link/osd-73/journal
+[osd.74]
+        host = cld-osd7-31
+        addr = 10.200.9.17
+        user = ceph
+        devs = /disk/link/osd-74/data
+        osd journal = /disk/link/osd-74/journal
+[osd.75]
+        host = cld-osd7-31
+        addr = 10.200.9.17
+        user = ceph
+        devs = /disk/link/osd-75/data
+        osd journal = /disk/link/osd-75/journal
+[osd.76]
+        host = cld-osd7-31
+        addr = 10.200.9.17
+        user = ceph
+        devs = /disk/link/osd-76/data
+        osd journal = /disk/link/osd-76/journal
+[osd.77]
+        host = cld-osd7-31
+        addr = 10.200.9.17
+        user = ceph
+        devs = /disk/link/osd-77/data
+        osd journal = /disk/link/osd-77/journal
+[osd.78]
+        host = cld-osd7-31
+        addr = 10.200.9.17
+        user = ceph
+        devs = /disk/link/osd-78/data
+        osd journal = /disk/link/osd-78/journal
+[osd.79]
+        host = cld-osd7-31
+        addr = 10.200.9.17
+        user = ceph
+        devs = /disk/link/osd-79/data
+        osd journal = /disk/link/osd-79/journal
+[osd.80]
+        host = cld-osd7-31
+        addr = 10.200.9.17
+        user = ceph
+        devs = /disk/link/osd-80/data
+        osd journal = /disk/link/osd-80/journal
+[osd.81]
+        host = cld-osd7-31
+        addr = 10.200.9.17
+        user = ceph
+        devs = /disk/link/osd-81/data
+        osd journal = /disk/link/osd-81/journal
+[osd.82]
+        host = cld-osd7-31
+        addr = 10.200.9.17
+        user = ceph
+        devs = /disk/link/osd-82/data
+        osd journal = /disk/link/osd-82/journal
+[osd.83]
+        host = cld-osd7-31
+        addr = 10.200.9.17
+        user = ceph
+        devs = /disk/link/osd-83/data
+        osd journal = /disk/link/osd-83/journal
+
+################################## OSD in 10.200.9.18 ###################################
+[osd.84]
+        host = cld-osd8-31
+        addr = 10.200.9.18
+        user = ceph
+        devs = /disk/link/osd-84/data
+        osd journal = /disk/link/osd-84/journal
+[osd.85]
+        host = cld-osd8-31
+        addr = 10.200.9.18
+        user = ceph
+        devs = /disk/link/osd-85/data
+        osd journal = /disk/link/osd-85/journal
+[osd.86]
+        host = cld-osd8-31
+        addr = 10.200.9.18
+        user = ceph
+        devs = /disk/link/osd-86/data
+        osd journal = /disk/link/osd-86/journal
+[osd.87]
+        host = cld-osd8-31
+        addr = 10.200.9.18
+        user = ceph
+        devs = /disk/link/osd-87/data
+        osd journal = /disk/link/osd-87/journal
+[osd.88]
+        host = cld-osd8-31
+        addr = 10.200.9.18
+        user = ceph
+        devs = /disk/link/osd-88/data
+        osd journal = /disk/link/osd-88/journal
+[osd.89]
+        host = cld-osd8-31
+        addr = 10.200.9.18
+        user = ceph
+        devs = /disk/link/osd-89/data
+        osd journal = /disk/link/osd-89/journal
+[osd.90]
+        host = cld-osd8-31
+        addr = 10.200.9.18
+        user = ceph
+        devs = /disk/link/osd-90/data
+        osd journal = /disk/link/osd-90/journal
+[osd.91]
+        host = cld-osd8-31
+        addr = 10.200.9.18
+        user = ceph
+        devs = /disk/link/osd-91/data
+        osd journal = /disk/link/osd-91/journal
+[osd.92]
+        host = cld-osd8-31
+        addr = 10.200.9.18
+        user = ceph
+        devs = /disk/link/osd-92/data
+        osd journal = /disk/link/osd-92/journal
+[osd.93]
+        host = cld-osd8-31
+        addr = 10.200.9.18
+        user = ceph
+        devs = /disk/link/osd-93/data
+        osd journal = /disk/link/osd-93/journal
+[osd.94]
+        host = cld-osd8-31
+        addr = 10.200.9.18
+        user = ceph
+        devs = /disk/link/osd-94/data
+        osd journal = /disk/link/osd-94/journal
+[osd.95]
+        host = cld-osd8-31
+        addr = 10.200.9.18
+        user = ceph
+        devs = /disk/link/osd-95/data
+        osd journal = /disk/link/osd-95/journal
+
+################################## OSD in 10.200.9.19 ###################################
+[osd.96]
+        host = cld-osd9-31
+        addr = 10.200.9.19
+        user = ceph
+        devs = /disk/link/osd-96/data
+        osd journal = /disk/link/osd-96/journal
+[osd.97]
+        host = cld-osd9-31
+        addr = 10.200.9.19
+        user = ceph
+        devs = /disk/link/osd-97/data
+        osd journal = /disk/link/osd-97/journal
+[osd.98]
+        host = cld-osd9-31
+        addr = 10.200.9.19
+        user = ceph
+        devs = /disk/link/osd-98/data
+        osd journal = /disk/link/osd-98/journal
+[osd.99]
+        host = cld-osd9-31
+        addr = 10.200.9.19
+        user = ceph
+        devs = /disk/link/osd-99/data
+        osd journal = /disk/link/osd-99/journal
+[osd.100]
+        host = cld-osd9-31
+        addr = 10.200.9.19
+        user = ceph
+        devs = /disk/link/osd-100/data
+        osd journal = /disk/link/osd-100/journal
+[osd.101]
+        host = cld-osd9-31
+        addr = 10.200.9.19
+        user = ceph
+        devs = /disk/link/osd-101/data
+        osd journal = /disk/link/osd-101/journal
+[osd.102]
+        host = cld-osd9-31
+        addr = 10.200.9.19
+        user = ceph
+        devs = /disk/link/osd-102/data
+        osd journal = /disk/link/osd-102/journal
+[osd.103]
+        host = cld-osd9-31
+        addr = 10.200.9.19
+        user = ceph
+        devs = /disk/link/osd-103/data
+        osd journal = /disk/link/osd-103/journal
+[osd.104]
+        host = cld-osd9-31
+        addr = 10.200.9.19
+        user = ceph
+        devs = /disk/link/osd-104/data
+        osd journal = /disk/link/osd-104/journal
+[osd.105]
+        host = cld-osd9-31
+        addr = 10.200.9.19
+        user = ceph
+        devs = /disk/link/osd-105/data
+        osd journal = /disk/link/osd-105/journal
+[osd.106]
+        host = cld-osd9-31
+        addr = 10.200.9.19
+        user = ceph
+        devs = /disk/link/osd-106/data
+        osd journal = /disk/link/osd-106/journal
+[osd.107]
+        host = cld-osd9-31
+        addr = 10.200.9.19
+        user = ceph
+        devs = /disk/link/osd-107/data
+        osd journal = /disk/link/osd-107/journal
+
+################################## OSD in 10.200.9.20 ###################################
+[osd.108]
+        host = cld-osd10-31
+        addr = 10.200.9.20
+        user = ceph
+        devs = /disk/link/osd-108/data
+        osd journal = /disk/link/osd-108/journal
+[osd.109]
+        host = cld-osd10-31
+        addr = 10.200.9.20
+        user = ceph
+        devs = /disk/link/osd-109/data
+        osd journal = /disk/link/osd-109/journal
+[osd.110]
+        host = cld-osd10-31
+        addr = 10.200.9.20
+        user = ceph
+        devs = /disk/link/osd-110/data
+        osd journal = /disk/link/osd-110/journal
+[osd.111]
+        host = cld-osd10-31
+        addr = 10.200.9.20
+        user = ceph
+        devs = /disk/link/osd-111/data
+        osd journal = /disk/link/osd-111/journal
+[osd.112]
+        host = cld-osd10-31
+        addr = 10.200.9.20
+        user = ceph
+        devs = /disk/link/osd-112/data
+        osd journal = /disk/link/osd-112/journal
+[osd.113]
+        host = cld-osd10-31
+        addr = 10.200.9.20
+        user = ceph
+        devs = /disk/link/osd-113/data
+        osd journal = /disk/link/osd-113/journal
+[osd.114]
+        host = cld-osd10-31
+        addr = 10.200.9.20
+        user = ceph
+        devs = /disk/link/osd-114/data
+        osd journal = /disk/link/osd-114/journal
+[osd.115]
+        host = cld-osd10-31
+        addr = 10.200.9.20
+        user = ceph
+        devs = /disk/link/osd-115/data
+        osd journal = /disk/link/osd-115/journal
+[osd.116]
+        host = cld-osd10-31
+        addr = 10.200.9.20
+        user = ceph
+        devs = /disk/link/osd-116/data
+        osd journal = /disk/link/osd-116/journal
+[osd.117]
+        host = cld-osd10-31
+        addr = 10.200.9.20
+        user = ceph
+        devs = /disk/link/osd-117/data
+        osd journal = /disk/link/osd-117/journal
+[osd.118]
+        host = cld-osd10-31
+        addr = 10.200.9.20
+        user = ceph
+        devs = /disk/link/osd-118/data
+        osd journal = /disk/link/osd-118/journal
+[osd.119]
+        host = cld-osd10-31
+        addr = 10.200.9.20
+        user = ceph
+        devs = /disk/link/osd-119/data
+        osd journal = /disk/link/osd-119/journal
+
+################################## OSD in 10.200.9.21 ###################################
+[osd.120]
+        host = cld-osd11-31
+        addr = 10.200.9.21
+        user = ceph
+        devs = /disk/link/osd-120/data
+        osd journal = /disk/link/osd-120/journal
+[osd.121]
+        host = cld-osd11-31
+        addr = 10.200.9.21
+        user = ceph
+        devs = /disk/link/osd-121/data
+        osd journal = /disk/link/osd-121/journal
+[osd.122]
+        host = cld-osd11-31
+        addr = 10.200.9.21
+        user = ceph
+        devs = /disk/link/osd-122/data
+        osd journal = /disk/link/osd-122/journal
+[osd.123]
+        host = cld-osd11-31
+        addr = 10.200.9.21
+        user = ceph
+        devs = /disk/link/osd-123/data
+        osd journal = /disk/link/osd-123/journal
+[osd.124]
+        host = cld-osd11-31
+        addr = 10.200.9.21
+        user = ceph
+        devs = /disk/link/osd-124/data
+        osd journal = /disk/link/osd-124/journal
+[osd.125]
+        host = cld-osd11-31
+        addr = 10.200.9.21
+        user = ceph
+        devs = /disk/link/osd-125/data
+        osd journal = /disk/link/osd-125/journal
+[osd.126]
+        host = cld-osd11-31
+        addr = 10.200.9.21
+        user = ceph
+        devs = /disk/link/osd-126/data
+        osd journal = /disk/link/osd-126/journal
+[osd.127]
+        host = cld-osd11-31
+        addr = 10.200.9.21
+        user = ceph
+        devs = /disk/link/osd-127/data
+        osd journal = /disk/link/osd-127/journal
+[osd.128]
+        host = cld-osd11-31
+        addr = 10.200.9.21
+        user = ceph
+        devs = /disk/link/osd-128/data
+        osd journal = /disk/link/osd-128/journal
+[osd.129]
+        host = cld-osd11-31
+        addr = 10.200.9.21
+        user = ceph
+        devs = /disk/link/osd-129/data
+        osd journal = /disk/link/osd-129/journal
+[osd.130]
+        host = cld-osd11-31
+        addr = 10.200.9.21
+        user = ceph
+        devs = /disk/link/osd-130/data
+        osd journal = /disk/link/osd-130/journal
+[osd.131]
+        host = cld-osd11-31
+        addr = 10.200.9.21
+        user = ceph
+        devs = /disk/link/osd-131/data
+        osd journal = /disk/link/osd-131/journal
+
+################################## OSD in 10.200.9.22 ###################################
+[osd.132]
+        host = cld-osd12-31
+        addr = 10.200.9.22
+        user = ceph
+        devs = /disk/link/osd-132/data
+        osd journal = /disk/link/osd-132/journal
+[osd.133]
+        host = cld-osd12-31
+        addr = 10.200.9.22
+        user = ceph
+        devs = /disk/link/osd-133/data
+        osd journal = /disk/link/osd-133/journal
+[osd.134]
+        host = cld-osd12-31
+        addr = 10.200.9.22
+        user = ceph
+        devs = /disk/link/osd-134/data
+        osd journal = /disk/link/osd-134/journal
+[osd.135]
+        host = cld-osd12-31
+        addr = 10.200.9.22
+        user = ceph
+        devs = /disk/link/osd-135/data
+        osd journal = /disk/link/osd-135/journal
+[osd.136]
+        host = cld-osd12-31
+        addr = 10.200.9.22
+        user = ceph
+        devs = /disk/link/osd-136/data
+        osd journal = /disk/link/osd-136/journal
+[osd.137]
+        host = cld-osd12-31
+        addr = 10.200.9.22
+        user = ceph
+        devs = /disk/link/osd-137/data
+        osd journal = /disk/link/osd-137/journal
+[osd.138]
+        host = cld-osd12-31
+        addr = 10.200.9.22
+        user = ceph
+        devs = /disk/link/osd-138/data
+        osd journal = /disk/link/osd-138/journal
+[osd.139]
+        host = cld-osd12-31
+        addr = 10.200.9.22
+        user = ceph
+        devs = /disk/link/osd-139/data
+        osd journal = /disk/link/osd-139/journal
+[osd.140]
+        host = cld-osd12-31
+        addr = 10.200.9.22
+        user = ceph
+        devs = /disk/link/osd-140/data
+        osd journal = /disk/link/osd-140/journal
+[osd.141]
+        host = cld-osd12-31
+        addr = 10.200.9.22
+        user = ceph
+        devs = /disk/link/osd-141/data
+        osd journal = /disk/link/osd-141/journal
+[osd.142]
+        host = cld-osd12-31
+        addr = 10.200.9.22
+        user = ceph
+        devs = /disk/link/osd-142/data
+        osd journal = /disk/link/osd-142/journal
+[osd.143]
+        host = cld-osd12-31
+        addr = 10.200.9.22
+        user = ceph
+        devs = /disk/link/osd-143/data
+        osd journal = /disk/link/osd-143/journal
+
+################################## OSD in 10.200.9.23 ###################################
+[osd.144]
+        host = cld-osd13-31
+        addr = 10.200.9.23
+        user = ceph
+        devs = /disk/link/osd-144/data
+        osd journal = /disk/link/osd-144/journal
+[osd.145]
+        host = cld-osd13-31
+        addr = 10.200.9.23
+        user = ceph
+        devs = /disk/link/osd-145/data
+        osd journal = /disk/link/osd-145/journal
+[osd.146]
+        host = cld-osd13-31
+        addr = 10.200.9.23
+        user = ceph
+        devs = /disk/link/osd-146/data
+        osd journal = /disk/link/osd-146/journal
+[osd.147]
+        host = cld-osd13-31
+        addr = 10.200.9.23
+        user = ceph
+        devs = /disk/link/osd-147/data
+        osd journal = /disk/link/osd-147/journal
+[osd.148]
+        host = cld-osd13-31
+        addr = 10.200.9.23
+        user = ceph
+        devs = /disk/link/osd-148/data
+        osd journal = /disk/link/osd-148/journal
+[osd.149]
+        host = cld-osd13-31
+        addr = 10.200.9.23
+        user = ceph
+        devs = /disk/link/osd-149/data
+        osd journal = /disk/link/osd-149/journal
+[osd.150]
+        host = cld-osd13-31
+        addr = 10.200.9.23
+        user = ceph
+        devs = /disk/link/osd-150/data
+        osd journal = /disk/link/osd-150/journal
+[osd.151]
+        host = cld-osd13-31
+        addr = 10.200.9.23
+        user = ceph
+        devs = /disk/link/osd-151/data
+        osd journal = /disk/link/osd-151/journal
+[osd.152]
+        host = cld-osd13-31
+        addr = 10.200.9.23
+        user = ceph
+        devs = /disk/link/osd-152/data
+        osd journal = /disk/link/osd-152/journal
+[osd.153]
+        host = cld-osd13-31
+        addr = 10.200.9.23
+        user = ceph
+        devs = /disk/link/osd-153/data
+        osd journal = /disk/link/osd-153/journal
+[osd.154]
+        host = cld-osd13-31
+        addr = 10.200.9.23
+        user = ceph
+        devs = /disk/link/osd-154/data
+        osd journal = /disk/link/osd-154/journal
+[osd.155]
+        host = cld-osd13-31
+        addr = 10.200.9.23
+        user = ceph
+        devs = /disk/link/osd-155/data
+        osd journal = /disk/link/osd-155/journal
+
+################################## OSD in 10.200.9.24 ###################################
+[osd.156]
+        host = cld-osd14-31
+        addr = 10.200.9.24
+        user = ceph
+        devs = /disk/link/osd-156/data
+        osd journal = /disk/link/osd-156/journal
+[osd.157]
+        host = cld-osd14-31
+        addr = 10.200.9.24
+        user = ceph
+        devs = /disk/link/osd-157/data
+        osd journal = /disk/link/osd-157/journal
+[osd.158]
+        host = cld-osd14-31
+        addr = 10.200.9.24
+        user = ceph
+        devs = /disk/link/osd-158/data
+        osd journal = /disk/link/osd-158/journal
+[osd.159]
+        host = cld-osd14-31
+        addr = 10.200.9.24
+        user = ceph
+        devs = /disk/link/osd-159/data
+        osd journal = /disk/link/osd-159/journal
+[osd.160]
+        host = cld-osd14-31
+        addr = 10.200.9.24
+        user = ceph
+        devs = /disk/link/osd-160/data
+        osd journal = /disk/link/osd-160/journal
+[osd.161]
+        host = cld-osd14-31
+        addr = 10.200.9.24
+        user = ceph
+        devs = /disk/link/osd-161/data
+        osd journal = /disk/link/osd-161/journal
+[osd.162]
+        host = cld-osd14-31
+        addr = 10.200.9.24
+        user = ceph
+        devs = /disk/link/osd-162/data
+        osd journal = /disk/link/osd-162/journal
+[osd.163]
+        host = cld-osd14-31
+        addr = 10.200.9.24
+        user = ceph
+        devs = /disk/link/osd-163/data
+        osd journal = /disk/link/osd-163/journal
+[osd.164]
+        host = cld-osd14-31
+        addr = 10.200.9.24
+        user = ceph
+        devs = /disk/link/osd-164/data
+        osd journal = /disk/link/osd-164/journal
+[osd.165]
+        host = cld-osd14-31
+        addr = 10.200.9.24
+        user = ceph
+        devs = /disk/link/osd-165/data
+        osd journal = /disk/link/osd-165/journal
+[osd.166]
+        host = cld-osd14-31
+        addr = 10.200.9.24
+        user = ceph
+        devs = /disk/link/osd-166/data
+        osd journal = /disk/link/osd-166/journal
+[osd.167]
+        host = cld-osd14-31
+        addr = 10.200.9.24
+        user = ceph
+        devs = /disk/link/osd-167/data
+        osd journal = /disk/link/osd-167/journal
+
+################################## OSD in 10.200.9.25 ###################################
+[osd.168]
+        host = cld-osd15-31
+        addr = 10.200.9.25
+        user = ceph
+        devs = /disk/link/osd-168/data
+        osd journal = /disk/link/osd-168/journal
+[osd.169]
+        host = cld-osd15-31
+        addr = 10.200.9.25
+        user = ceph
+        devs = /disk/link/osd-169/data
+        osd journal = /disk/link/osd-169/journal
+[osd.170]
+        host = cld-osd15-31
+        addr = 10.200.9.25
+        user = ceph
+        devs = /disk/link/osd-170/data
+        osd journal = /disk/link/osd-170/journal
+[osd.171]
+        host = cld-osd15-31
+        addr = 10.200.9.25
+        user = ceph
+        devs = /disk/link/osd-171/data
+        osd journal = /disk/link/osd-171/journal
+[osd.172]
+        host = cld-osd15-31
+        addr = 10.200.9.25
+        user = ceph
+        devs = /disk/link/osd-172/data
+        osd journal = /disk/link/osd-172/journal
+[osd.173]
+        host = cld-osd15-31
+        addr = 10.200.9.25
+        user = ceph
+        devs = /disk/link/osd-173/data
+        osd journal = /disk/link/osd-173/journal
+[osd.174]
+        host = cld-osd15-31
+        addr = 10.200.9.25
+        user = ceph
+        devs = /disk/link/osd-174/data
+        osd journal = /disk/link/osd-174/journal
+[osd.175]
+        host = cld-osd15-31
+        addr = 10.200.9.25
+        user = ceph
+        devs = /disk/link/osd-175/data
+        osd journal = /disk/link/osd-175/journal
+[osd.176]
+        host = cld-osd15-31
+        addr = 10.200.9.25
+        user = ceph
+        devs = /disk/link/osd-176/data
+        osd journal = /disk/link/osd-176/journal
+[osd.177]
+        host = cld-osd15-31
+        addr = 10.200.9.25
+        user = ceph
+        devs = /disk/link/osd-177/data
+        osd journal = /disk/link/osd-177/journal
+[osd.178]
+        host = cld-osd15-31
+        addr = 10.200.9.25
+        user = ceph
+        devs = /disk/link/osd-178/data
+        osd journal = /disk/link/osd-178/journal
+[osd.179]
+        host = cld-osd15-31
+        addr = 10.200.9.25
+        user = ceph
+        devs = /disk/link/osd-179/data
+        osd journal = /disk/link/osd-179/journal
+
+################################## OSD in 10.200.9.26 ###################################
+[osd.180]
+        host = cld-osd16-31
+        addr = 10.200.9.26
+        user = ceph
+        devs = /disk/link/osd-180/data
+        osd journal = /disk/link/osd-180/journal
+[osd.181]
+        host = cld-osd16-31
+        addr = 10.200.9.26
+        user = ceph
+        devs = /disk/link/osd-181/data
+        osd journal = /disk/link/osd-181/journal
+[osd.182]
+        host = cld-osd16-31
+        addr = 10.200.9.26
+        user = ceph
+        devs = /disk/link/osd-182/data
+        osd journal = /disk/link/osd-182/journal
+[osd.183]
+        host = cld-osd16-31
+        addr = 10.200.9.26
+        user = ceph
+        devs = /disk/link/osd-183/data
+        osd journal = /disk/link/osd-183/journal
+[osd.184]
+        host = cld-osd16-31
+        addr = 10.200.9.26
+        user = ceph
+        devs = /disk/link/osd-184/data
+        osd journal = /disk/link/osd-184/journal
+[osd.185]
+        host = cld-osd16-31
+        addr = 10.200.9.26
+        user = ceph
+        devs = /disk/link/osd-185/data
+        osd journal = /disk/link/osd-185/journal
+[osd.186]
+        host = cld-osd16-31
+        addr = 10.200.9.26
+        user = ceph
+        devs = /disk/link/osd-186/data
+        osd journal = /disk/link/osd-186/journal
+[osd.187]
+        host = cld-osd16-31
+        addr = 10.200.9.26
+        user = ceph
+        devs = /disk/link/osd-187/data
+        osd journal = /disk/link/osd-187/journal
+[osd.188]
+        host = cld-osd16-31
+        addr = 10.200.9.26
+        user = ceph
+        devs = /disk/link/osd-188/data
+        osd journal = /disk/link/osd-188/journal
+[osd.189]
+        host = cld-osd16-31
+        addr = 10.200.9.26
+        user = ceph
+        devs = /disk/link/osd-189/data
+        osd journal = /disk/link/osd-189/journal
+[osd.190]
+        host = cld-osd16-31
+        addr = 10.200.9.26
+        user = ceph
+        devs = /disk/link/osd-190/data
+        osd journal = /disk/link/osd-190/journal
+[osd.191]
+        host = cld-osd16-31
+        addr = 10.200.9.26
+        user = ceph
+        devs = /disk/link/osd-191/data
+        osd journal = /disk/link/osd-191/journal
+
+################################## OSD in 10.200.9.27 ###################################
+[osd.192]
+        host = cld-osd17-31
+        addr = 10.200.9.27
+        user = ceph
+        devs = /disk/link/osd-192/data
+        osd journal = /disk/link/osd-192/journal
+[osd.193]
+        host = cld-osd17-31
+        addr = 10.200.9.27
+        user = ceph
+        devs = /disk/link/osd-193/data
+        osd journal = /disk/link/osd-193/journal
+[osd.194]
+        host = cld-osd17-31
+        addr = 10.200.9.27
+        user = ceph
+        devs = /disk/link/osd-194/data
+        osd journal = /disk/link/osd-194/journal
+[osd.195]
+        host = cld-osd17-31
+        addr = 10.200.9.27
+        user = ceph
+        devs = /disk/link/osd-195/data
+        osd journal = /disk/link/osd-195/journal
+[osd.196]
+        host = cld-osd17-31
+        addr = 10.200.9.27
+        user = ceph
+        devs = /disk/link/osd-196/data
+        osd journal = /disk/link/osd-196/journal
+[osd.197]
+        host = cld-osd17-31
+        addr = 10.200.9.27
+        user = ceph
+        devs = /disk/link/osd-197/data
+        osd journal = /disk/link/osd-197/journal
+[osd.198]
+        host = cld-osd17-31
+        addr = 10.200.9.27
+        user = ceph
+        devs = /disk/link/osd-198/data
+        osd journal = /disk/link/osd-198/journal
+[osd.199]
+        host = cld-osd17-31
+        addr = 10.200.9.27
+        user = ceph
+        devs = /disk/link/osd-199/data
+        osd journal = /disk/link/osd-199/journal
+[osd.200]
+        host = cld-osd17-31
+        addr = 10.200.9.27
+        user = ceph
+        devs = /disk/link/osd-200/data
+        osd journal = /disk/link/osd-200/journal
+[osd.201]
+        host = cld-osd17-31
+        addr = 10.200.9.27
+        user = ceph
+        devs = /disk/link/osd-201/data
+        osd journal = /disk/link/osd-201/journal
+[osd.202]
+        host = cld-osd17-31
+        addr = 10.200.9.27
+        user = ceph
+        devs = /disk/link/osd-202/data
+        osd journal = /disk/link/osd-202/journal
+[osd.203]
+        host = cld-osd17-31
+        addr = 10.200.9.27
+        user = ceph
+        devs = /disk/link/osd-203/data
+        osd journal = /disk/link/osd-203/journal
+
+################################## OSD in 10.200.9.28 ###################################
+[osd.204]
+        host = cld-osd18-31
+        addr = 10.200.9.28
+        user = ceph
+        devs = /disk/link/osd-204/data
+        osd journal = /disk/link/osd-204/journal
+[osd.205]
+        host = cld-osd18-31
+        addr = 10.200.9.28
+        user = ceph
+        devs = /disk/link/osd-205/data
+        osd journal = /disk/link/osd-205/journal
+[osd.206]
+        host = cld-osd18-31
+        addr = 10.200.9.28
+        user = ceph
+        devs = /disk/link/osd-206/data
+        osd journal = /disk/link/osd-206/journal
+[osd.207]
+        host = cld-osd18-31
+        addr = 10.200.9.28
+        user = ceph
+        devs = /disk/link/osd-207/data
+        osd journal = /disk/link/osd-207/journal
+[osd.208]
+        host = cld-osd18-31
+        addr = 10.200.9.28
+        user = ceph
+        devs = /disk/link/osd-208/data
+        osd journal = /disk/link/osd-208/journal
+[osd.209]
+        host = cld-osd18-31
+        addr = 10.200.9.28
+        user = ceph
+        devs = /disk/link/osd-209/data
+        osd journal = /disk/link/osd-209/journal
+[osd.210]
+        host = cld-osd18-31
+        addr = 10.200.9.28
+        user = ceph
+        devs = /disk/link/osd-210/data
+        osd journal = /disk/link/osd-210/journal
+[osd.211]
+        host = cld-osd18-31
+        addr = 10.200.9.28
+        user = ceph
+        devs = /disk/link/osd-211/data
+        osd journal = /disk/link/osd-211/journal
+[osd.212]
+        host = cld-osd18-31
+        addr = 10.200.9.28
+        user = ceph
+        devs = /disk/link/osd-212/data
+        osd journal = /disk/link/osd-212/journal
+[osd.213]
+        host = cld-osd18-31
+        addr = 10.200.9.28
+        user = ceph
+        devs = /disk/link/osd-213/data
+        osd journal = /disk/link/osd-213/journal
+[osd.214]
+        host = cld-osd18-31
+        addr = 10.200.9.28
+        user = ceph
+        devs = /disk/link/osd-214/data
+        osd journal = /disk/link/osd-214/journal
+[osd.215]
+        host = cld-osd18-31
+        addr = 10.200.9.28
+        user = ceph
+        devs = /disk/link/osd-215/data
+        osd journal = /disk/link/osd-215/journal
+
+################################## OSD in 10.200.9.29 ###################################
+[osd.216]
+        host = cld-osd19-31
+        addr = 10.200.9.29
+        user = ceph
+        devs = /disk/link/osd-216/data
+        osd journal = /disk/link/osd-216/journal
+[osd.217]
+        host = cld-osd19-31
+        addr = 10.200.9.29
+        user = ceph
+        devs = /disk/link/osd-217/data
+        osd journal = /disk/link/osd-217/journal
+[osd.218]
+        host = cld-osd19-31
+        addr = 10.200.9.29
+        user = ceph
+        devs = /disk/link/osd-218/data
+        osd journal = /disk/link/osd-218/journal
+[osd.219]
+        host = cld-osd19-31
+        addr = 10.200.9.29
+        user = ceph
+        devs = /disk/link/osd-219/data
+        osd journal = /disk/link/osd-219/journal
+[osd.220]
+        host = cld-osd19-31
+        addr = 10.200.9.29
+        user = ceph
+        devs = /disk/link/osd-220/data
+        osd journal = /disk/link/osd-220/journal
+[osd.221]
+        host = cld-osd19-31
+        addr = 10.200.9.29
+        user = ceph
+        devs = /disk/link/osd-221/data
+        osd journal = /disk/link/osd-221/journal
+[osd.222]
+        host = cld-osd19-31
+        addr = 10.200.9.29
+        user = ceph
+        devs = /disk/link/osd-222/data
+        osd journal = /disk/link/osd-222/journal
+[osd.223]
+        host = cld-osd19-31
+        addr = 10.200.9.29
+        user = ceph
+        devs = /disk/link/osd-223/data
+        osd journal = /disk/link/osd-223/journal
+[osd.224]
+        host = cld-osd19-31
+        addr = 10.200.9.29
+        user = ceph
+        devs = /disk/link/osd-224/data
+        osd journal = /disk/link/osd-224/journal
+[osd.225]
+        host = cld-osd19-31
+        addr = 10.200.9.29
+        user = ceph
+        devs = /disk/link/osd-225/data
+        osd journal = /disk/link/osd-225/journal
+[osd.226]
+        host = cld-osd19-31
+        addr = 10.200.9.29
+        user = ceph
+        devs = /disk/link/osd-226/data
+        osd journal = /disk/link/osd-226/journal
+[osd.227]
+        host = cld-osd19-31
+        addr = 10.200.9.29
+        user = ceph
+        devs = /disk/link/osd-227/data
+        osd journal = /disk/link/osd-227/journal
+
+################################## OSD in 10.200.9.30 ###################################
+[osd.228]
+        host = cld-osd20-31
+        addr = 10.200.9.30
+        user = ceph
+        devs = /disk/link/osd-228/data
+        osd journal = /disk/link/osd-228/journal
+[osd.229]
+        host = cld-osd20-31
+        addr = 10.200.9.30
+        user = ceph
+        devs = /disk/link/osd-229/data
+        osd journal = /disk/link/osd-229/journal
+[osd.230]
+        host = cld-osd20-31
+        addr = 10.200.9.30
+        user = ceph
+        devs = /disk/link/osd-230/data
+        osd journal = /disk/link/osd-230/journal
+[osd.231]
+        host = cld-osd20-31
+        addr = 10.200.9.30
+        user = ceph
+        devs = /disk/link/osd-231/data
+        osd journal = /disk/link/osd-231/journal
+[osd.232]
+        host = cld-osd20-31
+        addr = 10.200.9.30
+        user = ceph
+        devs = /disk/link/osd-232/data
+        osd journal = /disk/link/osd-232/journal
+[osd.233]
+        host = cld-osd20-31
+        addr = 10.200.9.30
+        user = ceph
+        devs = /disk/link/osd-233/data
+        osd journal = /disk/link/osd-233/journal
+[osd.234]
+        host = cld-osd20-31
+        addr = 10.200.9.30
+        user = ceph
+        devs = /disk/link/osd-234/data
+        osd journal = /disk/link/osd-234/journal
+[osd.235]
+        host = cld-osd20-31
+        addr = 10.200.9.30
+        user = ceph
+        devs = /disk/link/osd-235/data
+        osd journal = /disk/link/osd-235/journal
+[osd.236]
+        host = cld-osd20-31
+        addr = 10.200.9.30
+        user = ceph
+        devs = /disk/link/osd-236/data
+        osd journal = /disk/link/osd-236/journal
+[osd.237]
+        host = cld-osd20-31
+        addr = 10.200.9.30
+        user = ceph
+        devs = /disk/link/osd-237/data
+        osd journal = /disk/link/osd-237/journal
+[osd.238]
+        host = cld-osd20-31
+        addr = 10.200.9.30
+        user = ceph
+        devs = /disk/link/osd-238/data
+        osd journal = /disk/link/osd-238/journal
+[osd.239]
+        host = cld-osd20-31
+        addr = 10.200.9.30
+        user = ceph
+        devs = /disk/link/osd-239/data
+        osd journal = /disk/link/osd-239/journal
+
+################################## OSD in 10.200.9.31 ###################################
+[osd.240]
+        host = cld-osd21-31
+        addr = 10.200.9.31
+        user = ceph
+        devs = /disk/link/osd-240/data
+        osd journal = /disk/link/osd-240/journal
+[osd.241]
+        host = cld-osd21-31
+        addr = 10.200.9.31
+        user = ceph
+        devs = /disk/link/osd-241/data
+        osd journal = /disk/link/osd-241/journal
+[osd.242]
+        host = cld-osd21-31
+        addr = 10.200.9.31
+        user = ceph
+        devs = /disk/link/osd-242/data
+        osd journal = /disk/link/osd-242/journal
+[osd.243]
+        host = cld-osd21-31
+        addr = 10.200.9.31
+        user = ceph
+        devs = /disk/link/osd-243/data
+        osd journal = /disk/link/osd-243/journal
+[osd.244]
+        host = cld-osd21-31
+        addr = 10.200.9.31
+        user = ceph
+        devs = /disk/link/osd-244/data
+        osd journal = /disk/link/osd-244/journal
+[osd.245]
+        host = cld-osd21-31
+        addr = 10.200.9.31
+        user = ceph
+        devs = /disk/link/osd-245/data
+        osd journal = /disk/link/osd-245/journal
+[osd.246]
+        host = cld-osd21-31
+        addr = 10.200.9.31
+        user = ceph
+        devs = /disk/link/osd-246/data
+        osd journal = /disk/link/osd-246/journal
+[osd.247]
+        host = cld-osd21-31
+        addr = 10.200.9.31
+        user = ceph
+        devs = /disk/link/osd-247/data
+        osd journal = /disk/link/osd-247/journal
+[osd.248]
+        host = cld-osd21-31
+        addr = 10.200.9.31
+        user = ceph
+        devs = /disk/link/osd-248/data
+        osd journal = /disk/link/osd-248/journal
+[osd.249]
+        host = cld-osd21-31
+        addr = 10.200.9.31
+        user = ceph
+        devs = /disk/link/osd-249/data
+        osd journal = /disk/link/osd-249/journal
+[osd.250]
+        host = cld-osd21-31
+        addr = 10.200.9.31
+        user = ceph
+        devs = /disk/link/osd-250/data
+        osd journal = /disk/link/osd-250/journal
+[osd.251]
+        host = cld-osd21-31
+        addr = 10.200.9.31
+        user = ceph
+        devs = /disk/link/osd-251/data
+        osd journal = /disk/link/osd-251/journal
+
+################################## OSD in 10.200.9.32 ###################################
+[osd.252]
+        host = cld-osd22-31
+        addr = 10.200.9.32
+        user = ceph
+        devs = /disk/link/osd-252/data
+        osd journal = /disk/link/osd-252/journal
+[osd.253]
+        host = cld-osd22-31
+        addr = 10.200.9.32
+        user = ceph
+        devs = /disk/link/osd-253/data
+        osd journal = /disk/link/osd-253/journal
+[osd.254]
+        host = cld-osd22-31
+        addr = 10.200.9.32
+        user = ceph
+        devs = /disk/link/osd-254/data
+        osd journal = /disk/link/osd-254/journal
+[osd.255]
+        host = cld-osd22-31
+        addr = 10.200.9.32
+        user = ceph
+        devs = /disk/link/osd-255/data
+        osd journal = /disk/link/osd-255/journal
+[osd.256]
+        host = cld-osd22-31
+        addr = 10.200.9.32
+        user = ceph
+        devs = /disk/link/osd-256/data
+        osd journal = /disk/link/osd-256/journal
+[osd.257]
+        host = cld-osd22-31
+        addr = 10.200.9.32
+        user = ceph
+        devs = /disk/link/osd-257/data
+        osd journal = /disk/link/osd-257/journal
+[osd.258]
+        host = cld-osd22-31
+        addr = 10.200.9.32
+        user = ceph
+        devs = /disk/link/osd-258/data
+        osd journal = /disk/link/osd-258/journal
+[osd.259]
+        host = cld-osd22-31
+        addr = 10.200.9.32
+        user = ceph
+        devs = /disk/link/osd-259/data
+        osd journal = /disk/link/osd-259/journal
+[osd.260]
+        host = cld-osd22-31
+        addr = 10.200.9.32
+        user = ceph
+        devs = /disk/link/osd-260/data
+        osd journal = /disk/link/osd-260/journal
+[osd.261]
+        host = cld-osd22-31
+        addr = 10.200.9.32
+        user = ceph
+        devs = /disk/link/osd-261/data
+        osd journal = /disk/link/osd-261/journal
+[osd.262]
+        host = cld-osd22-31
+        addr = 10.200.9.32
+        user = ceph
+        devs = /disk/link/osd-262/data
+        osd journal = /disk/link/osd-262/journal
+[osd.263]
+        host = cld-osd22-31
+        addr = 10.200.9.32
+        user = ceph
+        devs = /disk/link/osd-263/data
+        osd journal = /disk/link/osd-263/journal
+
+################################## OSD in 10.200.9.33 ###################################
+[osd.264]
+        host = cld-osd23-31
+        addr = 10.200.9.33
+        user = ceph
+        devs = /disk/link/osd-264/data
+        osd journal = /disk/link/osd-264/journal
+[osd.265]
+        host = cld-osd23-31
+        addr = 10.200.9.33
+        user = ceph
+        devs = /disk/link/osd-265/data
+        osd journal = /disk/link/osd-265/journal
+[osd.266]
+        host = cld-osd23-31
+        addr = 10.200.9.33
+        user = ceph
+        devs = /disk/link/osd-266/data
+        osd journal = /disk/link/osd-266/journal
+[osd.267]
+        host = cld-osd23-31
+        addr = 10.200.9.33
+        user = ceph
+        devs = /disk/link/osd-267/data
+        osd journal = /disk/link/osd-267/journal
+[osd.268]
+        host = cld-osd23-31
+        addr = 10.200.9.33
+        user = ceph
+        devs = /disk/link/osd-268/data
+        osd journal = /disk/link/osd-268/journal
+[osd.269]
+        host = cld-osd23-31
+        addr = 10.200.9.33
+        user = ceph
+        devs = /disk/link/osd-269/data
+        osd journal = /disk/link/osd-269/journal
+[osd.270]
+        host = cld-osd23-31
+        addr = 10.200.9.33
+        user = ceph
+        devs = /disk/link/osd-270/data
+        osd journal = /disk/link/osd-270/journal
+[osd.271]
+        host = cld-osd23-31
+        addr = 10.200.9.33
+        user = ceph
+        devs = /disk/link/osd-271/data
+        osd journal = /disk/link/osd-271/journal
+[osd.272]
+        host = cld-osd23-31
+        addr = 10.200.9.33
+        user = ceph
+        devs = /disk/link/osd-272/data
+        osd journal = /disk/link/osd-272/journal
+[osd.273]
+        host = cld-osd23-31
+        addr = 10.200.9.33
+        user = ceph
+        devs = /disk/link/osd-273/data
+        osd journal = /disk/link/osd-273/journal
+[osd.274]
+        host = cld-osd23-31
+        addr = 10.200.9.33
+        user = ceph
+        devs = /disk/link/osd-274/data
+        osd journal = /disk/link/osd-274/journal
+[osd.275]
+        host = cld-osd23-31
+        addr = 10.200.9.33
+        user = ceph
+        devs = /disk/link/osd-275/data
+        osd journal = /disk/link/osd-275/journal
+
+################################## OSD in 10.200.9.34 ###################################
+[osd.276]
+        host = cld-osd24-31
+        addr = 10.200.9.34
+        user = ceph
+        devs = /disk/link/osd-276/data
+        osd journal = /disk/link/osd-276/journal
+[osd.277]
+        host = cld-osd24-31
+        addr = 10.200.9.34
+        user = ceph
+        devs = /disk/link/osd-277/data
+        osd journal = /disk/link/osd-277/journal
+[osd.278]
+        host = cld-osd24-31
+        addr = 10.200.9.34
+        user = ceph
+        devs = /disk/link/osd-278/data
+        osd journal = /disk/link/osd-278/journal
+[osd.279]
+        host = cld-osd24-31
+        addr = 10.200.9.34
+        user = ceph
+        devs = /disk/link/osd-279/data
+        osd journal = /disk/link/osd-279/journal
+[osd.280]
+        host = cld-osd24-31
+        addr = 10.200.9.34
+        user = ceph
+        devs = /disk/link/osd-280/data
+        osd journal = /disk/link/osd-280/journal
+[osd.281]
+        host = cld-osd24-31
+        addr = 10.200.9.34
+        user = ceph
+        devs = /disk/link/osd-281/data
+        osd journal = /disk/link/osd-281/journal
+[osd.282]
+        host = cld-osd24-31
+        addr = 10.200.9.34
+        user = ceph
+        devs = /disk/link/osd-282/data
+        osd journal = /disk/link/osd-282/journal
+[osd.283]
+        host = cld-osd24-31
+        addr = 10.200.9.34
+        user = ceph
+        devs = /disk/link/osd-283/data
+        osd journal = /disk/link/osd-283/journal
+[osd.284]
+        host = cld-osd24-31
+        addr = 10.200.9.34
+        user = ceph
+        devs = /disk/link/osd-284/data
+        osd journal = /disk/link/osd-284/journal
+[osd.285]
+        host = cld-osd24-31
+        addr = 10.200.9.34
+        user = ceph
+        devs = /disk/link/osd-285/data
+        osd journal = /disk/link/osd-285/journal
+[osd.286]
+        host = cld-osd24-31
+        addr = 10.200.9.34
+        user = ceph
+        devs = /disk/link/osd-286/data
+        osd journal = /disk/link/osd-286/journal
+[osd.287]
+        host = cld-osd24-31
+        addr = 10.200.9.34
+        user = ceph
+        devs = /disk/link/osd-287/data
+        osd journal = /disk/link/osd-287/journal
+
+################################## OSD in 10.200.9.35 ###################################
+[osd.288]
+        host = cld-osd25-31
+        addr = 10.200.9.35
+        user = ceph
+        devs = /disk/link/osd-288/data
+        osd journal = /disk/link/osd-288/journal
+[osd.289]
+        host = cld-osd25-31
+        addr = 10.200.9.35
+        user = ceph
+        devs = /disk/link/osd-289/data
+        osd journal = /disk/link/osd-289/journal
+[osd.290]
+        host = cld-osd25-31
+        addr = 10.200.9.35
+        user = ceph
+        devs = /disk/link/osd-290/data
+        osd journal = /disk/link/osd-290/journal
+[osd.291]
+        host = cld-osd25-31
+        addr = 10.200.9.35
+        user = ceph
+        devs = /disk/link/osd-291/data
+        osd journal = /disk/link/osd-291/journal
+[osd.292]
+        host = cld-osd25-31
+        addr = 10.200.9.35
+        user = ceph
+        devs = /disk/link/osd-292/data
+        osd journal = /disk/link/osd-292/journal
+[osd.293]
+        host = cld-osd25-31
+        addr = 10.200.9.35
+        user = ceph
+        devs = /disk/link/osd-293/data
+        osd journal = /disk/link/osd-293/journal
+[osd.294]
+        host = cld-osd25-31
+        addr = 10.200.9.35
+        user = ceph
+        devs = /disk/link/osd-294/data
+        osd journal = /disk/link/osd-294/journal
+[osd.295]
+        host = cld-osd25-31
+        addr = 10.200.9.35
+        user = ceph
+        devs = /disk/link/osd-295/data
+        osd journal = /disk/link/osd-295/journal
+[osd.296]
+        host = cld-osd25-31
+        addr = 10.200.9.35
+        user = ceph
+        devs = /disk/link/osd-296/data
+        osd journal = /disk/link/osd-296/journal
+[osd.297]
+        host = cld-osd25-31
+        addr = 10.200.9.35
+        user = ceph
+        devs = /disk/link/osd-297/data
+        osd journal = /disk/link/osd-297/journal
+[osd.298]
+        host = cld-osd25-31
+        addr = 10.200.9.35
+        user = ceph
+        devs = /disk/link/osd-298/data
+        osd journal = /disk/link/osd-298/journal
+[osd.299]
+        host = cld-osd25-31
+        addr = 10.200.9.35
+        user = ceph
+        devs = /disk/link/osd-299/data
+        osd journal = /disk/link/osd-299/journal
+
+################################## OSD in 10.200.9.36 ###################################
+[osd.300]
+        host = cld-osd26-31
+        addr = 10.200.9.36
+        user = ceph
+        devs = /disk/link/osd-300/data
+        osd journal = /disk/link/osd-300/journal
+[osd.301]
+        host = cld-osd26-31
+        addr = 10.200.9.36
+        user = ceph
+        devs = /disk/link/osd-301/data
+        osd journal = /disk/link/osd-301/journal
+[osd.302]
+        host = cld-osd26-31
+        addr = 10.200.9.36
+        user = ceph
+        devs = /disk/link/osd-302/data
+        osd journal = /disk/link/osd-302/journal
+[osd.303]
+        host = cld-osd26-31
+        addr = 10.200.9.36
+        user = ceph
+        devs = /disk/link/osd-303/data
+        osd journal = /disk/link/osd-303/journal
+[osd.304]
+        host = cld-osd26-31
+        addr = 10.200.9.36
+        user = ceph
+        devs = /disk/link/osd-304/data
+        osd journal = /disk/link/osd-304/journal
+[osd.305]
+        host = cld-osd26-31
+        addr = 10.200.9.36
+        user = ceph
+        devs = /disk/link/osd-305/data
+        osd journal = /disk/link/osd-305/journal
+[osd.306]
+        host = cld-osd26-31
+        addr = 10.200.9.36
+        user = ceph
+        devs = /disk/link/osd-306/data
+        osd journal = /disk/link/osd-306/journal
+[osd.307]
+        host = cld-osd26-31
+        addr = 10.200.9.36
+        user = ceph
+        devs = /disk/link/osd-307/data
+        osd journal = /disk/link/osd-307/journal
+[osd.308]
+        host = cld-osd26-31
+        addr = 10.200.9.36
+        user = ceph
+        devs = /disk/link/osd-308/data
+        osd journal = /disk/link/osd-308/journal
+[osd.309]
+        host = cld-osd26-31
+        addr = 10.200.9.36
+        user = ceph
+        devs = /disk/link/osd-309/data
+        osd journal = /disk/link/osd-309/journal
+[osd.310]
+        host = cld-osd26-31
+        addr = 10.200.9.36
+        user = ceph
+        devs = /disk/link/osd-310/data
+        osd journal = /disk/link/osd-310/journal
+[osd.311]
+        host = cld-osd26-31
+        addr = 10.200.9.36
+        user = ceph
+        devs = /disk/link/osd-311/data
+        osd journal = /disk/link/osd-311/journal
+
+################################## OSD in 10.200.9.37 ###################################
+[osd.312]
+        host = cld-osd27-31
+        addr = 10.200.9.37
+        user = ceph
+        devs = /disk/link/osd-312/data
+        osd journal = /disk/link/osd-312/journal
+[osd.313]
+        host = cld-osd27-31
+        addr = 10.200.9.37
+        user = ceph
+        devs = /disk/link/osd-313/data
+        osd journal = /disk/link/osd-313/journal
+[osd.314]
+        host = cld-osd27-31
+        addr = 10.200.9.37
+        user = ceph
+        devs = /disk/link/osd-314/data
+        osd journal = /disk/link/osd-314/journal
+[osd.315]
+        host = cld-osd27-31
+        addr = 10.200.9.37
+        user = ceph
+        devs = /disk/link/osd-315/data
+        osd journal = /disk/link/osd-315/journal
+[osd.316]
+        host = cld-osd27-31
+        addr = 10.200.9.37
+        user = ceph
+        devs = /disk/link/osd-316/data
+        osd journal = /disk/link/osd-316/journal
+[osd.317]
+        host = cld-osd27-31
+        addr = 10.200.9.37
+        user = ceph
+        devs = /disk/link/osd-317/data
+        osd journal = /disk/link/osd-317/journal
+[osd.318]
+        host = cld-osd27-31
+        addr = 10.200.9.37
+        user = ceph
+        devs = /disk/link/osd-318/data
+        osd journal = /disk/link/osd-318/journal
+[osd.319]
+        host = cld-osd27-31
+        addr = 10.200.9.37
+        user = ceph
+        devs = /disk/link/osd-319/data
+        osd journal = /disk/link/osd-319/journal
+[osd.320]
+        host = cld-osd27-31
+        addr = 10.200.9.37
+        user = ceph
+        devs = /disk/link/osd-320/data
+        osd journal = /disk/link/osd-320/journal
+[osd.321]
+        host = cld-osd27-31
+        addr = 10.200.9.37
+        user = ceph
+        devs = /disk/link/osd-321/data
+        osd journal = /disk/link/osd-321/journal
+[osd.322]
+        host = cld-osd27-31
+        addr = 10.200.9.37
+        user = ceph
+        devs = /disk/link/osd-322/data
+        osd journal = /disk/link/osd-322/journal
+[osd.323]
+        host = cld-osd27-31
+        addr = 10.200.9.37
+        user = ceph
+        devs = /disk/link/osd-323/data
+        osd journal = /disk/link/osd-323/journal
+
+################################## OSD in 10.200.9.38 ###################################
+[osd.324]
+        host = cld-osd28-31
+        addr = 10.200.9.38
+        user = ceph
+        devs = /disk/link/osd-324/data
+        osd journal = /disk/link/osd-324/journal
+[osd.325]
+        host = cld-osd28-31
+        addr = 10.200.9.38
+        user = ceph
+        devs = /disk/link/osd-325/data
+        osd journal = /disk/link/osd-325/journal
+[osd.326]
+        host = cld-osd28-31
+        addr = 10.200.9.38
+        user = ceph
+        devs = /disk/link/osd-326/data
+        osd journal = /disk/link/osd-326/journal
+[osd.327]
+        host = cld-osd28-31
+        addr = 10.200.9.38
+        user = ceph
+        devs = /disk/link/osd-327/data
+        osd journal = /disk/link/osd-327/journal
+[osd.328]
+        host = cld-osd28-31
+        addr = 10.200.9.38
+        user = ceph
+        devs = /disk/link/osd-328/data
+        osd journal = /disk/link/osd-328/journal
+[osd.329]
+        host = cld-osd28-31
+        addr = 10.200.9.38
+        user = ceph
+        devs = /disk/link/osd-329/data
+        osd journal = /disk/link/osd-329/journal
+[osd.330]
+        host = cld-osd28-31
+        addr = 10.200.9.38
+        user = ceph
+        devs = /disk/link/osd-330/data
+        osd journal = /disk/link/osd-330/journal
+[osd.331]
+        host = cld-osd28-31
+        addr = 10.200.9.38
+        user = ceph
+        devs = /disk/link/osd-331/data
+        osd journal = /disk/link/osd-331/journal
+[osd.332]
+        host = cld-osd28-31
+        addr = 10.200.9.38
+        user = ceph
+        devs = /disk/link/osd-332/data
+        osd journal = /disk/link/osd-332/journal
+[osd.333]
+        host = cld-osd28-31
+        addr = 10.200.9.38
+        user = ceph
+        devs = /disk/link/osd-333/data
+        osd journal = /disk/link/osd-333/journal
+[osd.334]
+        host = cld-osd28-31
+        addr = 10.200.9.38
+        user = ceph
+        devs = /disk/link/osd-334/data
+        osd journal = /disk/link/osd-334/journal
+[osd.335]
+        host = cld-osd28-31
+        addr = 10.200.9.38
+        user = ceph
+        devs = /disk/link/osd-335/data
+        osd journal = /disk/link/osd-335/journal
+
+################################## OSD in 10.200.9.39 ###################################
+[osd.336]
+        host = cld-osd29-31
+        addr = 10.200.9.39
+        user = ceph
+        devs = /disk/link/osd-336/data
+        osd journal = /disk/link/osd-336/journal
+[osd.337]
+        host = cld-osd29-31
+        addr = 10.200.9.39
+        user = ceph
+        devs = /disk/link/osd-337/data
+        osd journal = /disk/link/osd-337/journal
+[osd.338]
+        host = cld-osd29-31
+        addr = 10.200.9.39
+        user = ceph
+        devs = /disk/link/osd-338/data
+        osd journal = /disk/link/osd-338/journal
+[osd.339]
+        host = cld-osd29-31
+        addr = 10.200.9.39
+        user = ceph
+        devs = /disk/link/osd-339/data
+        osd journal = /disk/link/osd-339/journal
+[osd.340]
+        host = cld-osd29-31
+        addr = 10.200.9.39
+        user = ceph
+        devs = /disk/link/osd-340/data
+        osd journal = /disk/link/osd-340/journal
+[osd.341]
+        host = cld-osd29-31
+        addr = 10.200.9.39
+        user = ceph
+        devs = /disk/link/osd-341/data
+        osd journal = /disk/link/osd-341/journal
+[osd.342]
+        host = cld-osd29-31
+        addr = 10.200.9.39
+        user = ceph
+        devs = /disk/link/osd-342/data
+        osd journal = /disk/link/osd-342/journal
+[osd.343]
+        host = cld-osd29-31
+        addr = 10.200.9.39
+        user = ceph
+        devs = /disk/link/osd-343/data
+        osd journal = /disk/link/osd-343/journal
+[osd.344]
+        host = cld-osd29-31
+        addr = 10.200.9.39
+        user = ceph
+        devs = /disk/link/osd-344/data
+        osd journal = /disk/link/osd-344/journal
+[osd.345]
+        host = cld-osd29-31
+        addr = 10.200.9.39
+        user = ceph
+        devs = /disk/link/osd-345/data
+        osd journal = /disk/link/osd-345/journal
+[osd.346]
+        host = cld-osd29-31
+        addr = 10.200.9.39
+        user = ceph
+        devs = /disk/link/osd-346/data
+        osd journal = /disk/link/osd-346/journal
+[osd.347]
+        host = cld-osd29-31
+        addr = 10.200.9.39
+        user = ceph
+        devs = /disk/link/osd-347/data
+        osd journal = /disk/link/osd-347/journal
+
+################################## OSD in 10.200.9.40 ###################################
+[osd.348]
+        host = cld-osd30-31
+        addr = 10.200.9.40
+        user = ceph
+        devs = /disk/link/osd-348/data
+        osd journal = /disk/link/osd-348/journal
+[osd.349]
+        host = cld-osd30-31
+        addr = 10.200.9.40
+        user = ceph
+        devs = /disk/link/osd-349/data
+        osd journal = /disk/link/osd-349/journal
+[osd.350]
+        host = cld-osd30-31
+        addr = 10.200.9.40
+        user = ceph
+        devs = /disk/link/osd-350/data
+        osd journal = /disk/link/osd-350/journal
+[osd.351]
+        host = cld-osd30-31
+        addr = 10.200.9.40
+        user = ceph
+        devs = /disk/link/osd-351/data
+        osd journal = /disk/link/osd-351/journal
+[osd.352]
+        host = cld-osd30-31
+        addr = 10.200.9.40
+        user = ceph
+        devs = /disk/link/osd-352/data
+        osd journal = /disk/link/osd-352/journal
+[osd.353]
+        host = cld-osd30-31
+        addr = 10.200.9.40
+        user = ceph
+        devs = /disk/link/osd-353/data
+        osd journal = /disk/link/osd-353/journal
+[osd.354]
+        host = cld-osd30-31
+        addr = 10.200.9.40
+        user = ceph
+        devs = /disk/link/osd-354/data
+        osd journal = /disk/link/osd-354/journal
+[osd.355]
+        host = cld-osd30-31
+        addr = 10.200.9.40
+        user = ceph
+        devs = /disk/link/osd-355/data
+        osd journal = /disk/link/osd-355/journal
+[osd.356]
+        host = cld-osd30-31
+        addr = 10.200.9.40
+        user = ceph
+        devs = /disk/link/osd-356/data
+        osd journal = /disk/link/osd-356/journal
+[osd.357]
+        host = cld-osd30-31
+        addr = 10.200.9.40
+        user = ceph
+        devs = /disk/link/osd-357/data
+        osd journal = /disk/link/osd-357/journal
+[osd.358]
+        host = cld-osd30-31
+        addr = 10.200.9.40
+        user = ceph
+        devs = /disk/link/osd-358/data
+        osd journal = /disk/link/osd-358/journal
+[osd.359]
+        host = cld-osd30-31
+        addr = 10.200.9.40
+        user = ceph
+        devs = /disk/link/osd-359/data
+        osd journal = /disk/link/osd-359/journal
+
+################################## OSD in 10.200.9.41 ###################################
+[osd.360]
+        host = cld-osd31-31
+        addr = 10.200.9.41
+        user = ceph
+        devs = /disk/link/osd-360/data
+        osd journal = /disk/link/osd-360/journal
+[osd.361]
+        host = cld-osd31-31
+        addr = 10.200.9.41
+        user = ceph
+        devs = /disk/link/osd-361/data
+        osd journal = /disk/link/osd-361/journal
+[osd.362]
+        host = cld-osd31-31
+        addr = 10.200.9.41
+        user = ceph
+        devs = /disk/link/osd-362/data
+        osd journal = /disk/link/osd-362/journal
+[osd.363]
+        host = cld-osd31-31
+        addr = 10.200.9.41
+        user = ceph
+        devs = /disk/link/osd-363/data
+        osd journal = /disk/link/osd-363/journal
+[osd.364]
+        host = cld-osd31-31
+        addr = 10.200.9.41
+        user = ceph
+        devs = /disk/link/osd-364/data
+        osd journal = /disk/link/osd-364/journal
+[osd.365]
+        host = cld-osd31-31
+        addr = 10.200.9.41
+        user = ceph
+        devs = /disk/link/osd-365/data
+        osd journal = /disk/link/osd-365/journal
+[osd.366]
+        host = cld-osd31-31
+        addr = 10.200.9.41
+        user = ceph
+        devs = /disk/link/osd-366/data
+        osd journal = /disk/link/osd-366/journal
+[osd.367]
+        host = cld-osd31-31
+        addr = 10.200.9.41
+        user = ceph
+        devs = /disk/link/osd-367/data
+        osd journal = /disk/link/osd-367/journal
+[osd.368]
+        host = cld-osd31-31
+        addr = 10.200.9.41
+        user = ceph
+        devs = /disk/link/osd-368/data
+        osd journal = /disk/link/osd-368/journal
+[osd.369]
+        host = cld-osd31-31
+        addr = 10.200.9.41
+        user = ceph
+        devs = /disk/link/osd-369/data
+        osd journal = /disk/link/osd-369/journal
+[osd.370]
+        host = cld-osd31-31
+        addr = 10.200.9.41
+        user = ceph
+        devs = /disk/link/osd-370/data
+        osd journal = /disk/link/osd-370/journal
+[osd.371]
+        host = cld-osd31-31
+        addr = 10.200.9.41
+        user = ceph
+        devs = /disk/link/osd-371/data
+        osd journal = /disk/link/osd-371/journal
+
+################################## OSD in 10.200.9.42 ###################################
+[osd.372]
+        host = cld-osd32-31
+        addr = 10.200.9.42
+        user = ceph
+        devs = /disk/link/osd-372/data
+        osd journal = /disk/link/osd-372/journal
+[osd.373]
+        host = cld-osd32-31
+        addr = 10.200.9.42
+        user = ceph
+        devs = /disk/link/osd-373/data
+        osd journal = /disk/link/osd-373/journal
+[osd.374]
+        host = cld-osd32-31
+        addr = 10.200.9.42
+        user = ceph
+        devs = /disk/link/osd-374/data
+        osd journal = /disk/link/osd-374/journal
+[osd.375]
+        host = cld-osd32-31
+        addr = 10.200.9.42
+        user = ceph
+        devs = /disk/link/osd-375/data
+        osd journal = /disk/link/osd-375/journal
+[osd.376]
+        host = cld-osd32-31
+        addr = 10.200.9.42
+        user = ceph
+        devs = /disk/link/osd-376/data
+        osd journal = /disk/link/osd-376/journal
+[osd.377]
+        host = cld-osd32-31
+        addr = 10.200.9.42
+        user = ceph
+        devs = /disk/link/osd-377/data
+        osd journal = /disk/link/osd-377/journal
+[osd.378]
+        host = cld-osd32-31
+        addr = 10.200.9.42
+        user = ceph
+        devs = /disk/link/osd-378/data
+        osd journal = /disk/link/osd-378/journal
+[osd.379]
+        host = cld-osd32-31
+        addr = 10.200.9.42
+        user = ceph
+        devs = /disk/link/osd-379/data
+        osd journal = /disk/link/osd-379/journal
+[osd.380]
+        host = cld-osd32-31
+        addr = 10.200.9.42
+        user = ceph
+        devs = /disk/link/osd-380/data
+        osd journal = /disk/link/osd-380/journal
+[osd.381]
+        host = cld-osd32-31
+        addr = 10.200.9.42
+        user = ceph
+        devs = /disk/link/osd-381/data
+        osd journal = /disk/link/osd-381/journal
+[osd.382]
+        host = cld-osd32-31
+        addr = 10.200.9.42
+        user = ceph
+        devs = /disk/link/osd-382/data
+        osd journal = /disk/link/osd-382/journal
+[osd.383]
+        host = cld-osd32-31
+        addr = 10.200.9.42
+        user = ceph
+        devs = /disk/link/osd-383/data
+        osd journal = /disk/link/osd-383/journal
+
+################################## OSD in 10.200.9.43 ###################################
+[osd.384]
+        host = cld-osd33-31
+        addr = 10.200.9.43
+        user = ceph
+        devs = /disk/link/osd-384/data
+        osd journal = /disk/link/osd-384/journal
+[osd.385]
+        host = cld-osd33-31
+        addr = 10.200.9.43
+        user = ceph
+        devs = /disk/link/osd-385/data
+        osd journal = /disk/link/osd-385/journal
+[osd.386]
+        host = cld-osd33-31
+        addr = 10.200.9.43
+        user = ceph
+        devs = /disk/link/osd-386/data
+        osd journal = /disk/link/osd-386/journal
+[osd.387]
+        host = cld-osd33-31
+        addr = 10.200.9.43
+        user = ceph
+        devs = /disk/link/osd-387/data
+        osd journal = /disk/link/osd-387/journal
+[osd.388]
+        host = cld-osd33-31
+        addr = 10.200.9.43
+        user = ceph
+        devs = /disk/link/osd-388/data
+        osd journal = /disk/link/osd-388/journal
+[osd.389]
+        host = cld-osd33-31
+        addr = 10.200.9.43
+        user = ceph
+        devs = /disk/link/osd-389/data
+        osd journal = /disk/link/osd-389/journal
+[osd.390]
+        host = cld-osd33-31
+        addr = 10.200.9.43
+        user = ceph
+        devs = /disk/link/osd-390/data
+        osd journal = /disk/link/osd-390/journal
+[osd.391]
+        host = cld-osd33-31
+        addr = 10.200.9.43
+        user = ceph
+        devs = /disk/link/osd-391/data
+        osd journal = /disk/link/osd-391/journal
+[osd.392]
+        host = cld-osd33-31
+        addr = 10.200.9.43
+        user = ceph
+        devs = /disk/link/osd-392/data
+        osd journal = /disk/link/osd-392/journal
+[osd.393]
+        host = cld-osd33-31
+        addr = 10.200.9.43
+        user = ceph
+        devs = /disk/link/osd-393/data
+        osd journal = /disk/link/osd-393/journal
+[osd.394]
+        host = cld-osd33-31
+        addr = 10.200.9.43
+        user = ceph
+        devs = /disk/link/osd-394/data
+        osd journal = /disk/link/osd-394/journal
+[osd.395]
+        host = cld-osd33-31
+        addr = 10.200.9.43
+        user = ceph
+        devs = /disk/link/osd-395/data
+        osd journal = /disk/link/osd-395/journal
+
+################################## OSD in 10.200.9.44 ###################################
+[osd.396]
+        host = cld-osd34-31
+        addr = 10.200.9.44
+        user = ceph
+        devs = /disk/link/osd-396/data
+        osd journal = /disk/link/osd-396/journal
+[osd.397]
+        host = cld-osd34-31
+        addr = 10.200.9.44
+        user = ceph
+        devs = /disk/link/osd-397/data
+        osd journal = /disk/link/osd-397/journal
+[osd.398]
+        host = cld-osd34-31
+        addr = 10.200.9.44
+        user = ceph
+        devs = /disk/link/osd-398/data
+        osd journal = /disk/link/osd-398/journal
+[osd.399]
+        host = cld-osd34-31
+        addr = 10.200.9.44
+        user = ceph
+        devs = /disk/link/osd-399/data
+        osd journal = /disk/link/osd-399/journal
+[osd.400]
+        host = cld-osd34-31
+        addr = 10.200.9.44
+        user = ceph
+        devs = /disk/link/osd-400/data
+        osd journal = /disk/link/osd-400/journal
+[osd.401]
+        host = cld-osd34-31
+        addr = 10.200.9.44
+        user = ceph
+        devs = /disk/link/osd-401/data
+        osd journal = /disk/link/osd-401/journal
+[osd.402]
+        host = cld-osd34-31
+        addr = 10.200.9.44
+        user = ceph
+        devs = /disk/link/osd-402/data
+        osd journal = /disk/link/osd-402/journal
+[osd.403]
+        host = cld-osd34-31
+        addr = 10.200.9.44
+        user = ceph
+        devs = /disk/link/osd-403/data
+        osd journal = /disk/link/osd-403/journal
+[osd.404]
+        host = cld-osd34-31
+        addr = 10.200.9.44
+        user = ceph
+        devs = /disk/link/osd-404/data
+        osd journal = /disk/link/osd-404/journal
+[osd.405]
+        host = cld-osd34-31
+        addr = 10.200.9.44
+        user = ceph
+        devs = /disk/link/osd-405/data
+        osd journal = /disk/link/osd-405/journal
+[osd.406]
+        host = cld-osd34-31
+        addr = 10.200.9.44
+        user = ceph
+        devs = /disk/link/osd-406/data
+        osd journal = /disk/link/osd-406/journal
+[osd.407]
+        host = cld-osd34-31
+        addr = 10.200.9.44
+        user = ceph
+        devs = /disk/link/osd-407/data
+        osd journal = /disk/link/osd-407/journal
+
+################################## OSD in 10.200.9.45 ###################################
+[osd.408]
+        host = cld-osd35-31
+        addr = 10.200.9.45
+        user = ceph
+        devs = /disk/link/osd-408/data
+        osd journal = /disk/link/osd-408/journal
+[osd.409]
+        host = cld-osd35-31
+        addr = 10.200.9.45
+        user = ceph
+        devs = /disk/link/osd-409/data
+        osd journal = /disk/link/osd-409/journal
+[osd.410]
+        host = cld-osd35-31
+        addr = 10.200.9.45
+        user = ceph
+        devs = /disk/link/osd-410/data
+        osd journal = /disk/link/osd-410/journal
+[osd.411]
+        host = cld-osd35-31
+        addr = 10.200.9.45
+        user = ceph
+        devs = /disk/link/osd-411/data
+        osd journal = /disk/link/osd-411/journal
+[osd.412]
+        host = cld-osd35-31
+        addr = 10.200.9.45
+        user = ceph
+        devs = /disk/link/osd-412/data
+        osd journal = /disk/link/osd-412/journal
+[osd.413]
+        host = cld-osd35-31
+        addr = 10.200.9.45
+        user = ceph
+        devs = /disk/link/osd-413/data
+        osd journal = /disk/link/osd-413/journal
+[osd.414]
+        host = cld-osd35-31
+        addr = 10.200.9.45
+        user = ceph
+        devs = /disk/link/osd-414/data
+        osd journal = /disk/link/osd-414/journal
+[osd.415]
+        host = cld-osd35-31
+        addr = 10.200.9.45
+        user = ceph
+        devs = /disk/link/osd-415/data
+        osd journal = /disk/link/osd-415/journal
+[osd.416]
+        host = cld-osd35-31
+        addr = 10.200.9.45
+        user = ceph
+        devs = /disk/link/osd-416/data
+        osd journal = /disk/link/osd-416/journal
+[osd.417]
+        host = cld-osd35-31
+        addr = 10.200.9.45
+        user = ceph
+        devs = /disk/link/osd-417/data
+        osd journal = /disk/link/osd-417/journal
+[osd.418]
+        host = cld-osd35-31
+        addr = 10.200.9.45
+        user = ceph
+        devs = /disk/link/osd-418/data
+        osd journal = /disk/link/osd-418/journal
+[osd.419]
+        host = cld-osd35-31
+        addr = 10.200.9.45
+        user = ceph
+        devs = /disk/link/osd-419/data
+        osd journal = /disk/link/osd-419/journal
+
+################################## OSD in 10.200.9.46 ###################################
+[osd.420]
+        host = cld-osd36-31
+        addr = 10.200.9.46
+        user = ceph
+        devs = /disk/link/osd-420/data
+        osd journal = /disk/link/osd-420/journal
+[osd.421]
+        host = cld-osd36-31
+        addr = 10.200.9.46
+        user = ceph
+        devs = /disk/link/osd-421/data
+        osd journal = /disk/link/osd-421/journal
+[osd.422]
+        host = cld-osd36-31
+        addr = 10.200.9.46
+        user = ceph
+        devs = /disk/link/osd-422/data
+        osd journal = /disk/link/osd-422/journal
+[osd.423]
+        host = cld-osd36-31
+        addr = 10.200.9.46
+        user = ceph
+        devs = /disk/link/osd-423/data
+        osd journal = /disk/link/osd-423/journal
+[osd.424]
+        host = cld-osd36-31
+        addr = 10.200.9.46
+        user = ceph
+        devs = /disk/link/osd-424/data
+        osd journal = /disk/link/osd-424/journal
+[osd.425]
+        host = cld-osd36-31
+        addr = 10.200.9.46
+        user = ceph
+        devs = /disk/link/osd-425/data
+        osd journal = /disk/link/osd-425/journal
+[osd.426]
+        host = cld-osd36-31
+        addr = 10.200.9.46
+        user = ceph
+        devs = /disk/link/osd-426/data
+        osd journal = /disk/link/osd-426/journal
+[osd.427]
+        host = cld-osd36-31
+        addr = 10.200.9.46
+        user = ceph
+        devs = /disk/link/osd-427/data
+        osd journal = /disk/link/osd-427/journal
+[osd.428]
+        host = cld-osd36-31
+        addr = 10.200.9.46
+        user = ceph
+        devs = /disk/link/osd-428/data
+        osd journal = /disk/link/osd-428/journal
+[osd.429]
+        host = cld-osd36-31
+        addr = 10.200.9.46
+        user = ceph
+        devs = /disk/link/osd-429/data
+        osd journal = /disk/link/osd-429/journal
+[osd.430]
+        host = cld-osd36-31
+        addr = 10.200.9.46
+        user = ceph
+        devs = /disk/link/osd-430/data
+        osd journal = /disk/link/osd-430/journal
+[osd.431]
+        host = cld-osd36-31
+        addr = 10.200.9.46
+        user = ceph
+        devs = /disk/link/osd-431/data
+        osd journal = /disk/link/osd-431/journal
+
+################################## OSD in 10.200.9.47 ###################################
+[osd.432]
+        host = cld-osd37-31
+        addr = 10.200.9.47
+        user = ceph
+        devs = /disk/link/osd-432/data
+        osd journal = /disk/link/osd-432/journal
+[osd.433]
+        host = cld-osd37-31
+        addr = 10.200.9.47
+        user = ceph
+        devs = /disk/link/osd-433/data
+        osd journal = /disk/link/osd-433/journal
+[osd.434]
+        host = cld-osd37-31
+        addr = 10.200.9.47
+        user = ceph
+        devs = /disk/link/osd-434/data
+        osd journal = /disk/link/osd-434/journal
+[osd.435]
+        host = cld-osd37-31
+        addr = 10.200.9.47
+        user = ceph
+        devs = /disk/link/osd-435/data
+        osd journal = /disk/link/osd-435/journal
+[osd.436]
+        host = cld-osd37-31
+        addr = 10.200.9.47
+        user = ceph
+        devs = /disk/link/osd-436/data
+        osd journal = /disk/link/osd-436/journal
+[osd.437]
+        host = cld-osd37-31
+        addr = 10.200.9.47
+        user = ceph
+        devs = /disk/link/osd-437/data
+        osd journal = /disk/link/osd-437/journal
+[osd.438]
+        host = cld-osd37-31
+        addr = 10.200.9.47
+        user = ceph
+        devs = /disk/link/osd-438/data
+        osd journal = /disk/link/osd-438/journal
+[osd.439]
+        host = cld-osd37-31
+        addr = 10.200.9.47
+        user = ceph
+        devs = /disk/link/osd-439/data
+        osd journal = /disk/link/osd-439/journal
+[osd.440]
+        host = cld-osd37-31
+        addr = 10.200.9.47
+        user = ceph
+        devs = /disk/link/osd-440/data
+        osd journal = /disk/link/osd-440/journal
+[osd.441]
+        host = cld-osd37-31
+        addr = 10.200.9.47
+        user = ceph
+        devs = /disk/link/osd-441/data
+        osd journal = /disk/link/osd-441/journal
+[osd.442]
+        host = cld-osd37-31
+        addr = 10.200.9.47
+        user = ceph
+        devs = /disk/link/osd-442/data
+        osd journal = /disk/link/osd-442/journal
+[osd.443]
+        host = cld-osd37-31
+        addr = 10.200.9.47
+        user = ceph
+        devs = /disk/link/osd-443/data
+        osd journal = /disk/link/osd-443/journal
+
+################################## OSD in 10.200.9.48 ###################################
+[osd.444]
+        host = cld-osd38-31
+        addr = 10.200.9.48
+        user = ceph
+        devs = /disk/link/osd-444/data
+        osd journal = /disk/link/osd-444/journal
+[osd.445]
+        host = cld-osd38-31
+        addr = 10.200.9.48
+        user = ceph
+        devs = /disk/link/osd-445/data
+        osd journal = /disk/link/osd-445/journal
+[osd.446]
+        host = cld-osd38-31
+        addr = 10.200.9.48
+        user = ceph
+        devs = /disk/link/osd-446/data
+        osd journal = /disk/link/osd-446/journal
+[osd.447]
+        host = cld-osd38-31
+        addr = 10.200.9.48
+        user = ceph
+        devs = /disk/link/osd-447/data
+        osd journal = /disk/link/osd-447/journal
+[osd.448]
+        host = cld-osd38-31
+        addr = 10.200.9.48
+        user = ceph
+        devs = /disk/link/osd-448/data
+        osd journal = /disk/link/osd-448/journal
+[osd.449]
+        host = cld-osd38-31
+        addr = 10.200.9.48
+        user = ceph
+        devs = /disk/link/osd-449/data
+        osd journal = /disk/link/osd-449/journal
+[osd.450]
+        host = cld-osd38-31
+        addr = 10.200.9.48
+        user = ceph
+        devs = /disk/link/osd-450/data
+        osd journal = /disk/link/osd-450/journal
+[osd.451]
+        host = cld-osd38-31
+        addr = 10.200.9.48
+        user = ceph
+        devs = /disk/link/osd-451/data
+        osd journal = /disk/link/osd-451/journal
+[osd.452]
+        host = cld-osd38-31
+        addr = 10.200.9.48
+        user = ceph
+        devs = /disk/link/osd-452/data
+        osd journal = /disk/link/osd-452/journal
+[osd.453]
+        host = cld-osd38-31
+        addr = 10.200.9.48
+        user = ceph
+        devs = /disk/link/osd-453/data
+        osd journal = /disk/link/osd-453/journal
+[osd.454]
+        host = cld-osd38-31
+        addr = 10.200.9.48
+        user = ceph
+        devs = /disk/link/osd-454/data
+        osd journal = /disk/link/osd-454/journal
+[osd.455]
+        host = cld-osd38-31
+        addr = 10.200.9.48
+        user = ceph
+        devs = /disk/link/osd-455/data
+        osd journal = /disk/link/osd-455/journal
+
+################################## OSD in 10.200.9.49 ###################################
+[osd.456]
+        host = cld-osd39-31
+        addr = 10.200.9.49
+        user = ceph
+        devs = /disk/link/osd-456/data
+        osd journal = /disk/link/osd-456/journal
+[osd.457]
+        host = cld-osd39-31
+        addr = 10.200.9.49
+        user = ceph
+        devs = /disk/link/osd-457/data
+        osd journal = /disk/link/osd-457/journal
+[osd.458]
+        host = cld-osd39-31
+        addr = 10.200.9.49
+        user = ceph
+        devs = /disk/link/osd-458/data
+        osd journal = /disk/link/osd-458/journal
+[osd.459]
+        host = cld-osd39-31
+        addr = 10.200.9.49
+        user = ceph
+        devs = /disk/link/osd-459/data
+        osd journal = /disk/link/osd-459/journal
+[osd.460]
+        host = cld-osd39-31
+        addr = 10.200.9.49
+        user = ceph
+        devs = /disk/link/osd-460/data
+        osd journal = /disk/link/osd-460/journal
+[osd.461]
+        host = cld-osd39-31
+        addr = 10.200.9.49
+        user = ceph
+        devs = /disk/link/osd-461/data
+        osd journal = /disk/link/osd-461/journal
+[osd.462]
+        host = cld-osd39-31
+        addr = 10.200.9.49
+        user = ceph
+        devs = /disk/link/osd-462/data
+        osd journal = /disk/link/osd-462/journal
+[osd.463]
+        host = cld-osd39-31
+        addr = 10.200.9.49
+        user = ceph
+        devs = /disk/link/osd-463/data
+        osd journal = /disk/link/osd-463/journal
+[osd.464]
+        host = cld-osd39-31
+        addr = 10.200.9.49
+        user = ceph
+        devs = /disk/link/osd-464/data
+        osd journal = /disk/link/osd-464/journal
+[osd.465]
+        host = cld-osd39-31
+        addr = 10.200.9.49
+        user = ceph
+        devs = /disk/link/osd-465/data
+        osd journal = /disk/link/osd-465/journal
+[osd.466]
+        host = cld-osd39-31
+        addr = 10.200.9.49
+        user = ceph
+        devs = /disk/link/osd-466/data
+        osd journal = /disk/link/osd-466/journal
+[osd.467]
+        host = cld-osd39-31
+        addr = 10.200.9.49
+        user = ceph
+        devs = /disk/link/osd-467/data
+        osd journal = /disk/link/osd-467/journal
+
+################################## OSD in 10.200.9.50 ###################################
+[osd.468]
+        host = cld-osd40-31
+        addr = 10.200.9.50
+        user = ceph
+        devs = /disk/link/osd-468/data
+        osd journal = /disk/link/osd-468/journal
+[osd.469]
+        host = cld-osd40-31
+        addr = 10.200.9.50
+        user = ceph
+        devs = /disk/link/osd-469/data
+        osd journal = /disk/link/osd-469/journal
+[osd.470]
+        host = cld-osd40-31
+        addr = 10.200.9.50
+        user = ceph
+        devs = /disk/link/osd-470/data
+        osd journal = /disk/link/osd-470/journal
+[osd.471]
+        host = cld-osd40-31
+        addr = 10.200.9.50
+        user = ceph
+        devs = /disk/link/osd-471/data
+        osd journal = /disk/link/osd-471/journal
+[osd.472]
+        host = cld-osd40-31
+        addr = 10.200.9.50
+        user = ceph
+        devs = /disk/link/osd-472/data
+        osd journal = /disk/link/osd-472/journal
+[osd.473]
+        host = cld-osd40-31
+        addr = 10.200.9.50
+        user = ceph
+        devs = /disk/link/osd-473/data
+        osd journal = /disk/link/osd-473/journal
+[osd.474]
+        host = cld-osd40-31
+        addr = 10.200.9.50
+        user = ceph
+        devs = /disk/link/osd-474/data
+        osd journal = /disk/link/osd-474/journal
+[osd.475]
+        host = cld-osd40-31
+        addr = 10.200.9.50
+        user = ceph
+        devs = /disk/link/osd-475/data
+        osd journal = /disk/link/osd-475/journal
+[osd.476]
+        host = cld-osd40-31
+        addr = 10.200.9.50
+        user = ceph
+        devs = /disk/link/osd-476/data
+        osd journal = /disk/link/osd-476/journal
+[osd.477]
+        host = cld-osd40-31
+        addr = 10.200.9.50
+        user = ceph
+        devs = /disk/link/osd-477/data
+        osd journal = /disk/link/osd-477/journal
+[osd.478]
+        host = cld-osd40-31
+        addr = 10.200.9.50
+        user = ceph
+        devs = /disk/link/osd-478/data
+        osd journal = /disk/link/osd-478/journal
+[osd.479]
+        host = cld-osd40-31
+        addr = 10.200.9.50
+        user = ceph
+        devs = /disk/link/osd-479/data
+        osd journal = /disk/link/osd-479/journal
+
+################################## OSD in 10.200.9.51 ###################################
+[osd.480]
+        host = cld-osd41-31
+        addr = 10.200.9.51
+        user = ceph
+        devs = /disk/link/osd-480/data
+        osd journal = /disk/link/osd-480/journal
+[osd.481]
+        host = cld-osd41-31
+        addr = 10.200.9.51
+        user = ceph
+        devs = /disk/link/osd-481/data
+        osd journal = /disk/link/osd-481/journal
+[osd.482]
+        host = cld-osd41-31
+        addr = 10.200.9.51
+        user = ceph
+        devs = /disk/link/osd-482/data
+        osd journal = /disk/link/osd-482/journal
+[osd.483]
+        host = cld-osd41-31
+        addr = 10.200.9.51
+        user = ceph
+        devs = /disk/link/osd-483/data
+        osd journal = /disk/link/osd-483/journal
+[osd.484]
+        host = cld-osd41-31
+        addr = 10.200.9.51
+        user = ceph
+        devs = /disk/link/osd-484/data
+        osd journal = /disk/link/osd-484/journal
+[osd.485]
+        host = cld-osd41-31
+        addr = 10.200.9.51
+        user = ceph
+        devs = /disk/link/osd-485/data
+        osd journal = /disk/link/osd-485/journal
+[osd.486]
+        host = cld-osd41-31
+        addr = 10.200.9.51
+        user = ceph
+        devs = /disk/link/osd-486/data
+        osd journal = /disk/link/osd-486/journal
+[osd.487]
+        host = cld-osd41-31
+        addr = 10.200.9.51
+        user = ceph
+        devs = /disk/link/osd-487/data
+        osd journal = /disk/link/osd-487/journal
+[osd.488]
+        host = cld-osd41-31
+        addr = 10.200.9.51
+        user = ceph
+        devs = /disk/link/osd-488/data
+        osd journal = /disk/link/osd-488/journal
+[osd.489]
+        host = cld-osd41-31
+        addr = 10.200.9.51
+        user = ceph
+        devs = /disk/link/osd-489/data
+        osd journal = /disk/link/osd-489/journal
+[osd.490]
+        host = cld-osd41-31
+        addr = 10.200.9.51
+        user = ceph
+        devs = /disk/link/osd-490/data
+        osd journal = /disk/link/osd-490/journal
+[osd.491]
+        host = cld-osd41-31
+        addr = 10.200.9.51
+        user = ceph
+        devs = /disk/link/osd-491/data
+        osd journal = /disk/link/osd-491/journal
+
+################################## OSD in 10.200.9.52 ###################################
+[osd.492]
+        host = cld-osd42-31
+        addr = 10.200.9.52
+        user = ceph
+        devs = /disk/link/osd-492/data
+        osd journal = /disk/link/osd-492/journal
+[osd.493]
+        host = cld-osd42-31
+        addr = 10.200.9.52
+        user = ceph
+        devs = /disk/link/osd-493/data
+        osd journal = /disk/link/osd-493/journal
+[osd.494]
+        host = cld-osd42-31
+        addr = 10.200.9.52
+        user = ceph
+        devs = /disk/link/osd-494/data
+        osd journal = /disk/link/osd-494/journal
+[osd.495]
+        host = cld-osd42-31
+        addr = 10.200.9.52
+        user = ceph
+        devs = /disk/link/osd-495/data
+        osd journal = /disk/link/osd-495/journal
+[osd.496]
+        host = cld-osd42-31
+        addr = 10.200.9.52
+        user = ceph
+        devs = /disk/link/osd-496/data
+        osd journal = /disk/link/osd-496/journal
+[osd.497]
+        host = cld-osd42-31
+        addr = 10.200.9.52
+        user = ceph
+        devs = /disk/link/osd-497/data
+        osd journal = /disk/link/osd-497/journal
+[osd.498]
+        host = cld-osd42-31
+        addr = 10.200.9.52
+        user = ceph
+        devs = /disk/link/osd-498/data
+        osd journal = /disk/link/osd-498/journal
+[osd.499]
+        host = cld-osd42-31
+        addr = 10.200.9.52
+        user = ceph
+        devs = /disk/link/osd-499/data
+        osd journal = /disk/link/osd-499/journal
+[osd.500]
+        host = cld-osd42-31
+        addr = 10.200.9.52
+        user = ceph
+        devs = /disk/link/osd-500/data
+        osd journal = /disk/link/osd-500/journal
+[osd.501]
+        host = cld-osd42-31
+        addr = 10.200.9.52
+        user = ceph
+        devs = /disk/link/osd-501/data
+        osd journal = /disk/link/osd-501/journal
+[osd.502]
+        host = cld-osd42-31
+        addr = 10.200.9.52
+        user = ceph
+        devs = /disk/link/osd-502/data
+        osd journal = /disk/link/osd-502/journal
+[osd.503]
+        host = cld-osd42-31
+        addr = 10.200.9.52
+        user = ceph
+        devs = /disk/link/osd-503/data
+        osd journal = /disk/link/osd-503/journal
+
+################################## OSD in 10.200.9.53 ###################################
+[osd.504]
+        host = cld-osd43-31
+        addr = 10.200.9.53
+        user = ceph
+        devs = /disk/link/osd-504/data
+        osd journal = /disk/link/osd-504/journal
+[osd.505]
+        host = cld-osd43-31
+        addr = 10.200.9.53
+        user = ceph
+        devs = /disk/link/osd-505/data
+        osd journal = /disk/link/osd-505/journal
+[osd.506]
+        host = cld-osd43-31
+        addr = 10.200.9.53
+        user = ceph
+        devs = /disk/link/osd-506/data
+        osd journal = /disk/link/osd-506/journal
+[osd.507]
+        host = cld-osd43-31
+        addr = 10.200.9.53
+        user = ceph
+        devs = /disk/link/osd-507/data
+        osd journal = /disk/link/osd-507/journal
+[osd.508]
+        host = cld-osd43-31
+        addr = 10.200.9.53
+        user = ceph
+        devs = /disk/link/osd-508/data
+        osd journal = /disk/link/osd-508/journal
+[osd.509]
+        host = cld-osd43-31
+        addr = 10.200.9.53
+        user = ceph
+        devs = /disk/link/osd-509/data
+        osd journal = /disk/link/osd-509/journal
+[osd.510]
+        host = cld-osd43-31
+        addr = 10.200.9.53
+        user = ceph
+        devs = /disk/link/osd-510/data
+        osd journal = /disk/link/osd-510/journal
+[osd.511]
+        host = cld-osd43-31
+        addr = 10.200.9.53
+        user = ceph
+        devs = /disk/link/osd-511/data
+        osd journal = /disk/link/osd-511/journal
+[osd.512]
+        host = cld-osd43-31
+        addr = 10.200.9.53
+        user = ceph
+        devs = /disk/link/osd-512/data
+        osd journal = /disk/link/osd-512/journal
+[osd.513]
+        host = cld-osd43-31
+        addr = 10.200.9.53
+        user = ceph
+        devs = /disk/link/osd-513/data
+        osd journal = /disk/link/osd-513/journal
+[osd.514]
+        host = cld-osd43-31
+        addr = 10.200.9.53
+        user = ceph
+        devs = /disk/link/osd-514/data
+        osd journal = /disk/link/osd-514/journal
+[osd.515]
+        host = cld-osd43-31
+        addr = 10.200.9.53
+        user = ceph
+        devs = /disk/link/osd-515/data
+        osd journal = /disk/link/osd-515/journal
+
+################################## OSD in 10.200.9.54 ###################################
+[osd.516]
+        host = cld-osd44-31
+        addr = 10.200.9.54
+        user = ceph
+        devs = /disk/link/osd-516/data
+        osd journal = /disk/link/osd-516/journal
+[osd.517]
+        host = cld-osd44-31
+        addr = 10.200.9.54
+        user = ceph
+        devs = /disk/link/osd-517/data
+        osd journal = /disk/link/osd-517/journal
+[osd.518]
+        host = cld-osd44-31
+        addr = 10.200.9.54
+        user = ceph
+        devs = /disk/link/osd-518/data
+        osd journal = /disk/link/osd-518/journal
+[osd.519]
+        host = cld-osd44-31
+        addr = 10.200.9.54
+        user = ceph
+        devs = /disk/link/osd-519/data
+        osd journal = /disk/link/osd-519/journal
+[osd.520]
+        host = cld-osd44-31
+        addr = 10.200.9.54
+        user = ceph
+        devs = /disk/link/osd-520/data
+        osd journal = /disk/link/osd-520/journal
+[osd.521]
+        host = cld-osd44-31
+        addr = 10.200.9.54
+        user = ceph
+        devs = /disk/link/osd-521/data
+        osd journal = /disk/link/osd-521/journal
+[osd.522]
+        host = cld-osd44-31
+        addr = 10.200.9.54
+        user = ceph
+        devs = /disk/link/osd-522/data
+        osd journal = /disk/link/osd-522/journal
+[osd.523]
+        host = cld-osd44-31
+        addr = 10.200.9.54
+        user = ceph
+        devs = /disk/link/osd-523/data
+        osd journal = /disk/link/osd-523/journal
+[osd.524]
+        host = cld-osd44-31
+        addr = 10.200.9.54
+        user = ceph
+        devs = /disk/link/osd-524/data
+        osd journal = /disk/link/osd-524/journal
+[osd.525]
+        host = cld-osd44-31
+        addr = 10.200.9.54
+        user = ceph
+        devs = /disk/link/osd-525/data
+        osd journal = /disk/link/osd-525/journal
+[osd.526]
+        host = cld-osd44-31
+        addr = 10.200.9.54
+        user = ceph
+        devs = /disk/link/osd-526/data
+        osd journal = /disk/link/osd-526/journal
+[osd.527]
+        host = cld-osd44-31
+        addr = 10.200.9.54
+        user = ceph
+        devs = /disk/link/osd-527/data
+        osd journal = /disk/link/osd-527/journal
+
+################################## OSD in 10.200.9.55 ###################################
+[osd.528]
+        host = cld-osd45-31
+        addr = 10.200.9.55
+        user = ceph
+        devs = /disk/link/osd-528/data
+        osd journal = /disk/link/osd-528/journal
+[osd.529]
+        host = cld-osd45-31
+        addr = 10.200.9.55
+        user = ceph
+        devs = /disk/link/osd-529/data
+        osd journal = /disk/link/osd-529/journal
+[osd.530]
+        host = cld-osd45-31
+        addr = 10.200.9.55
+        user = ceph
+        devs = /disk/link/osd-530/data
+        osd journal = /disk/link/osd-530/journal
+[osd.531]
+        host = cld-osd45-31
+        addr = 10.200.9.55
+        user = ceph
+        devs = /disk/link/osd-531/data
+        osd journal = /disk/link/osd-531/journal
+[osd.532]
+        host = cld-osd45-31
+        addr = 10.200.9.55
+        user = ceph
+        devs = /disk/link/osd-532/data
+        osd journal = /disk/link/osd-532/journal
+[osd.533]
+        host = cld-osd45-31
+        addr = 10.200.9.55
+        user = ceph
+        devs = /disk/link/osd-533/data
+        osd journal = /disk/link/osd-533/journal
+[osd.534]
+        host = cld-osd45-31
+        addr = 10.200.9.55
+        user = ceph
+        devs = /disk/link/osd-534/data
+        osd journal = /disk/link/osd-534/journal
+[osd.535]
+        host = cld-osd45-31
+        addr = 10.200.9.55
+        user = ceph
+        devs = /disk/link/osd-535/data
+        osd journal = /disk/link/osd-535/journal
+[osd.536]
+        host = cld-osd45-31
+        addr = 10.200.9.55
+        user = ceph
+        devs = /disk/link/osd-536/data
+        osd journal = /disk/link/osd-536/journal
+[osd.537]
+        host = cld-osd45-31
+        addr = 10.200.9.55
+        user = ceph
+        devs = /disk/link/osd-537/data
+        osd journal = /disk/link/osd-537/journal
+[osd.538]
+        host = cld-osd45-31
+        addr = 10.200.9.55
+        user = ceph
+        devs = /disk/link/osd-538/data
+        osd journal = /disk/link/osd-538/journal
+[osd.539]
+        host = cld-osd45-31
+        addr = 10.200.9.55
+        user = ceph
+        devs = /disk/link/osd-539/data
+        osd journal = /disk/link/osd-539/journal
+
+################################## OSD in 10.200.9.56 ###################################
+[osd.540]
+        host = cld-osd46-31
+        addr = 10.200.9.56
+        user = ceph
+        devs = /disk/link/osd-540/data
+        osd journal = /disk/link/osd-540/journal
+[osd.541]
+        host = cld-osd46-31
+        addr = 10.200.9.56
+        user = ceph
+        devs = /disk/link/osd-541/data
+        osd journal = /disk/link/osd-541/journal
+[osd.542]
+        host = cld-osd46-31
+        addr = 10.200.9.56
+        user = ceph
+        devs = /disk/link/osd-542/data
+        osd journal = /disk/link/osd-542/journal
+[osd.543]
+        host = cld-osd46-31
+        addr = 10.200.9.56
+        user = ceph
+        devs = /disk/link/osd-543/data
+        osd journal = /disk/link/osd-543/journal
+[osd.544]
+        host = cld-osd46-31
+        addr = 10.200.9.56
+        user = ceph
+        devs = /disk/link/osd-544/data
+        osd journal = /disk/link/osd-544/journal
+[osd.545]
+        host = cld-osd46-31
+        addr = 10.200.9.56
+        user = ceph
+        devs = /disk/link/osd-545/data
+        osd journal = /disk/link/osd-545/journal
+[osd.546]
+        host = cld-osd46-31
+        addr = 10.200.9.56
+        user = ceph
+        devs = /disk/link/osd-546/data
+        osd journal = /disk/link/osd-546/journal
+[osd.547]
+        host = cld-osd46-31
+        addr = 10.200.9.56
+        user = ceph
+        devs = /disk/link/osd-547/data
+        osd journal = /disk/link/osd-547/journal
+[osd.548]
+        host = cld-osd46-31
+        addr = 10.200.9.56
+        user = ceph
+        devs = /disk/link/osd-548/data
+        osd journal = /disk/link/osd-548/journal
+[osd.549]
+        host = cld-osd46-31
+        addr = 10.200.9.56
+        user = ceph
+        devs = /disk/link/osd-549/data
+        osd journal = /disk/link/osd-549/journal
+[osd.550]
+        host = cld-osd46-31
+        addr = 10.200.9.56
+        user = ceph
+        devs = /disk/link/osd-550/data
+        osd journal = /disk/link/osd-550/journal
+[osd.551]
+        host = cld-osd46-31
+        addr = 10.200.9.56
+        user = ceph
+        devs = /disk/link/osd-551/data
+        osd journal = /disk/link/osd-551/journal
+
+################################## OSD in 10.200.9.57 ###################################
+[osd.552]
+        host = cld-osd47-31
+        addr = 10.200.9.57
+        user = ceph
+        devs = /disk/link/osd-552/data
+        osd journal = /disk/link/osd-552/journal
+[osd.553]
+        host = cld-osd47-31
+        addr = 10.200.9.57
+        user = ceph
+        devs = /disk/link/osd-553/data
+        osd journal = /disk/link/osd-553/journal
+[osd.554]
+        host = cld-osd47-31
+        addr = 10.200.9.57
+        user = ceph
+        devs = /disk/link/osd-554/data
+        osd journal = /disk/link/osd-554/journal
+[osd.555]
+        host = cld-osd47-31
+        addr = 10.200.9.57
+        user = ceph
+        devs = /disk/link/osd-555/data
+        osd journal = /disk/link/osd-555/journal
+[osd.556]
+        host = cld-osd47-31
+        addr = 10.200.9.57
+        user = ceph
+        devs = /disk/link/osd-556/data
+        osd journal = /disk/link/osd-556/journal
+[osd.557]
+        host = cld-osd47-31
+        addr = 10.200.9.57
+        user = ceph
+        devs = /disk/link/osd-557/data
+        osd journal = /disk/link/osd-557/journal
+[osd.558]
+        host = cld-osd47-31
+        addr = 10.200.9.57
+        user = ceph
+        devs = /disk/link/osd-558/data
+        osd journal = /disk/link/osd-558/journal
+[osd.559]
+        host = cld-osd47-31
+        addr = 10.200.9.57
+        user = ceph
+        devs = /disk/link/osd-559/data
+        osd journal = /disk/link/osd-559/journal
+[osd.560]
+        host = cld-osd47-31
+        addr = 10.200.9.57
+        user = ceph
+        devs = /disk/link/osd-560/data
+        osd journal = /disk/link/osd-560/journal
+[osd.561]
+        host = cld-osd47-31
+        addr = 10.200.9.57
+        user = ceph
+        devs = /disk/link/osd-561/data
+        osd journal = /disk/link/osd-561/journal
+[osd.562]
+        host = cld-osd47-31
+        addr = 10.200.9.57
+        user = ceph
+        devs = /disk/link/osd-562/data
+        osd journal = /disk/link/osd-562/journal
+[osd.563]
+        host = cld-osd47-31
+        addr = 10.200.9.57
+        user = ceph
+        devs = /disk/link/osd-563/data
+        osd journal = /disk/link/osd-563/journal
+
+################################## OSD in 10.200.9.58 ###################################
+[osd.564]
+        host = cld-osd48-31
+        addr = 10.200.9.58
+        user = ceph
+        devs = /disk/link/osd-564/data
+        osd journal = /disk/link/osd-564/journal
+[osd.565]
+        host = cld-osd48-31
+        addr = 10.200.9.58
+        user = ceph
+        devs = /disk/link/osd-565/data
+        osd journal = /disk/link/osd-565/journal
+[osd.566]
+        host = cld-osd48-31
+        addr = 10.200.9.58
+        user = ceph
+        devs = /disk/link/osd-566/data
+        osd journal = /disk/link/osd-566/journal
+[osd.567]
+        host = cld-osd48-31
+        addr = 10.200.9.58
+        user = ceph
+        devs = /disk/link/osd-567/data
+        osd journal = /disk/link/osd-567/journal
+[osd.568]
+        host = cld-osd48-31
+        addr = 10.200.9.58
+        user = ceph
+        devs = /disk/link/osd-568/data
+        osd journal = /disk/link/osd-568/journal
+[osd.569]
+        host = cld-osd48-31
+        addr = 10.200.9.58
+        user = ceph
+        devs = /disk/link/osd-569/data
+        osd journal = /disk/link/osd-569/journal
+[osd.570]
+        host = cld-osd48-31
+        addr = 10.200.9.58
+        user = ceph
+        devs = /disk/link/osd-570/data
+        osd journal = /disk/link/osd-570/journal
+[osd.571]
+        host = cld-osd48-31
+        addr = 10.200.9.58
+        user = ceph
+        devs = /disk/link/osd-571/data
+        osd journal = /disk/link/osd-571/journal
+[osd.572]
+        host = cld-osd48-31
+        addr = 10.200.9.58
+        user = ceph
+        devs = /disk/link/osd-572/data
+        osd journal = /disk/link/osd-572/journal
+[osd.573]
+        host = cld-osd48-31
+        addr = 10.200.9.58
+        user = ceph
+        devs = /disk/link/osd-573/data
+        osd journal = /disk/link/osd-573/journal
+[osd.574]
+        host = cld-osd48-31
+        addr = 10.200.9.58
+        user = ceph
+        devs = /disk/link/osd-574/data
+        osd journal = /disk/link/osd-574/journal
+[osd.575]
+        host = cld-osd48-31
+        addr = 10.200.9.58
+        user = ceph
+        devs = /disk/link/osd-575/data
+        osd journal = /disk/link/osd-575/journal
+
+

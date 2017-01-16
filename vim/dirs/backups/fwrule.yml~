@@ -1,0 +1,23 @@
+---
+#- file: path=/etc/fwrule state=directory
+#- file: path=/etc/fwrule/svc-enabled state=directory
+#- file: path=/etc/fwrule/ipset-enabled state=directory
+#- file: path=/etc/fwrule/skeleton-enabled state=directory
+#- file: path=/home/cld/conf/fwrule/ipset state=directory
+ 
+- file: path=/etc/fwrule state=directory
+- file: path=/etc/fwrule/{{ item }}-enabled state=directory
+  with_items:
+    - svc
+    - ipset
+    - skeleton
+- file: path=/home/cld/conf/fwrule/ipset state=directory
+        
+       
+- name: copy fwrule basic config file
+  copy: src=.fwrule.regdb dest=/etc/fwrule/
+- copy: src=fwrule dest=/home/cld/conf
+- raw: echo -e 'Yes\n' | config-fwrule.sh update
+- command: genrules.sh update
+- raw: cat /home/cld/conf/fwrule/ipset/* | ipset restore -exist
+- command: iptables-restore /etc/network/iptables

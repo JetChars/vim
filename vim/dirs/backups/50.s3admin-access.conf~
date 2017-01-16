@@ -1,0 +1,13 @@
+[s3-admin-access]
+Type = Access
+Protocol = TCP
+Port = 5000
+Policy Order = ["DROP", "ACCEPT"]
+Match 1  = { "ipset": "NTES_S3_ADMIN" }
+
+[s3-rgw-access]
+Type = Access
+Protocol = TCP
+Port = 80
+Policy Order = ["DROP", "ACCEPT"]
+Match 1  = { "ipset": "ALL" }

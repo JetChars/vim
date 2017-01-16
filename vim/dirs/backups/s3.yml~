@@ -1,0 +1,14 @@
+# Text File
+# AUTHOR:   JetChars
+# FILE:     s3.yml
+# ROLE:     TODO (some explanation)
+# CREATED:  2016-10-21 20:29:29
+# MODIFIED: 2016-11-14 21:21:10
+
+#- hosts: centos
+#- hosts: 10.63.48.11
+- hosts: 10.63.48.9
+#- hosts: hydra-rgw
+  become: yes
+  roles:
+    - common

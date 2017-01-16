@@ -1,0 +1,141 @@
+" Vim File
+" AUTHOR:   JetChars
+" FILE:     .vim_jc.vim
+" ROLE:     TODO (some explanation)
+" CREATED:  2016-12-04 22:35:31
+" MODIFIED: 2016-12-06 07:23:16
+
+""""""""""""""""""""""""""""""
+" basic settings
+""""""""""""""""""""""""""""""
+" unset <c-b> for file browser
+unmap <c-b>
+" enable auto-gen header for new file
+source ~/.vim/bundle/header.vim/plugin/header.vim
+" enable mouse input
+" set mouse=a
+" show line numbers
+set nu
+" save as sudo
+ca w!! w !sudo tee "%"
+" implement of cmd+s
+:map <M-s> :w<kEnter>  "Works in normal mode, must press Esc first"
+:imap <M-s> <Esc>:w<kEnter>i "Works in insert mode, saves and puts back in insert mode"
+"Toggle paste mode on and off:
+map <leader>pp :setlocal paste!<cr>
+"Quickly open a buffer for scripbble:
+map <leader>q :e ~/buffer<cr>
+
+
+""""""""""""""""""""""""""""""
+" vundle config
+""""""""""""""""""""""""""""""
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+" Class/module browser
+Bundle 'majutsushi/tagbar'
+" Better autocompletion
+Bundle 'Shougo/neocomplcache.vim'
+
+
+""""""""""""""""""""""""""""""
+" tab navigation mappings
+""""""""""""""""""""""""""""""
+map tn :tabn<CR>
+map tp :tabp<CR>
+map tm :tabm
+map tt :tabnew
+map ts :tab split<CR>
+map <C-S-Right> :tabn<CR>
+imap <C-S-Right> <ESC>:tabn<CR>
+map <C-S-Left> :tabp<CR>
+imap <C-S-Left> <ESC>:tabp<CR>
+
+
+""""""""""""""""""""""""""""""
+" => NeoComplCache
+""""""""""""""""""""""""""""""
+
+" most of them not documented because I'm not sure how they work
+" (docs aren't good, had to do a lot of trial and error to make
+" it play nice)
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_ignore_case = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_enable_fuzzy_completion = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_fuzzy_completion_start_length = 1
+let g:neocomplcache_auto_completion_start_length = 1
+let g:neocomplcache_manual_completion_start_length = 1
+let g:neocomplcache_min_keyword_length = 1
+let g:neocomplcache_min_syntax_length = 1
+" complete with workds from any opened file
+let g:neocomplcache_same_filetype_lists = {}
+let g:neocomplcache_same_filetype_lists._ = '_'
+
+
+""""""""""""""""""""""""""""""
+" => Tagbar
+""""""""""""""""""""""""""""""
+" toggle tagbar display
+map <F4> :TagbarToggle<CR>
+" autofocus on tagbar open
+let g:tagbar_autofocus = 1
+
+
+""""""""""""""""""""""""""""""
+" => MRU plugin
+""""""""""""""""""""""""""""""
+let MRU_Max_Entries = 400
+map <leader>o :MRU<CR>
+
+
+""""""""""""""""""""""""""""""
+" => NERDTree 
+""""""""""""""""""""""""""""""
+" toggle nerdtree display
+map <F3> :NERDTreeToggle<CR>
+" open nerdtree with the current file selected
+nmap ,t :NERDTreeFind<CR>
+" don;t show these file types
+let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
+
+
+""""""""""""""""""""""""""""""
+" => CtrlP 
+""""""""""""""""""""""""""""""
+" file finder mapping
+let g:ctrlp_map = ',e'
+" tags (symbols) in current file finder mapping
+nmap ,g :CtrlPBufTag<CR>
+" tags (symbols) in all files finder mapping
+nmap ,G :CtrlPBufTagAll<CR>
+" general code finder in all files mapping
+nmap ,f :CtrlPLine<CR>
+" recent files finder mapping
+nmap ,m :CtrlPMRUFiles<CR>
+" commands finder mapping
+nmap ,c :CtrlPCmdPalette<CR>
+" to be able to call CtrlP with default search text
+function! CtrlPWithSearchText(search_text, ctrlp_command_end)
+    execute ':CtrlP' . a:ctrlp_command_end
+    call feedkeys(a:search_text)
+endfunction
+" same as previous mappings, but calling with current word as default text
+nmap ,wg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
+nmap ,wG :call CtrlPWithSearchText(expand('<cword>'), 'BufTagAll')<CR>
+nmap ,wf :call CtrlPWithSearchText(expand('<cword>'), 'Line')<CR>
+nmap ,we :call CtrlPWithSearchText(expand('<cword>'), '')<CR>
+nmap ,pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
+nmap ,wm :call CtrlPWithSearchText(expand('<cword>'), 'MRUFiles')<CR>
+nmap ,wc :call CtrlPWithSearchText(expand('<cword>'), 'CmdPalette')<CR>
+" don't change working directory
+let g:ctrlp_working_path_mode = 0
+" ignore these files and folders on file finder
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
+  \ 'file': '\.pyc$\|\.pyo$',
+  \ }
+

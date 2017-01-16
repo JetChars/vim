@@ -1,0 +1,16 @@
+# Text File
+# AUTHOR:   JetChars
+# FILE:     ceph-conf.yml
+# ROLE:     TODO (some explanation)
+# CREATED:  2016-11-30 12:41:04
+# MODIFIED: 2016-12-02 15:19:40
+
+- file: >
+    path="/home/ceph/{{ item }}" state=directory
+    owner=ceph group=ceph mode=0700
+  with_items: [scripts, pkgs]
+  tags: test
+- template: >
+    src={{ role_path }}/templates/ceph.{{ group_names[0] }}.conf.j2
+    dest=/etc/ceph/ceph.conf 
+    mode=0644 owner=root group=root

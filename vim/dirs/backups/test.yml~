@@ -1,0 +1,25 @@
+# Text File
+# AUTHOR:   JetChars
+# FILE:     test.yml
+# ROLE:     TODO (some explanation)
+# CREATED:  2016-11-22 17:12:32
+# MODIFIED: 2016-11-30 15:16:55
+
+#- hosts: jebian
+#  tasks:
+#    - local_action: raw cd roles/common/files/s3admin_api && git pull
+#      register: hello
+#    - debug: msg={{ hello.stdout }}
+#    - debug: msg={{ hello.stderr }}
+
+- hosts: cld-osd47-31.i.nease.net
+  tasks:
+    - setup:
+    - debug: msg={{ facter_hostname }}
+    - debug: msg={{ ansible_hostname }}
+    - debug: msg={{ inventory_hostname }}
+    - debug: msg={{ facter_ipaddress_eth1 }}
+    - debug: msg={{ group_names }}
+    - debug: msg={{ group_names[0] }}
+    - debug: msg={{ inventory_hostname | regex_replace('^cld-osd(.*)-.*$', '\\1') | map('extract', {'x': 42, 'y': 31}) }}
+

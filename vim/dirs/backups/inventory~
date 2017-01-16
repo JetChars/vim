@@ -1,0 +1,35 @@
+[serpens-osd]
+10.110.81.[11:19] ansible_become_pass=fai
+10.110.81.[40:48] ansible_become_pass=fai
+
+[serpens-rgw]
+220.181.36.14 ansible_become_pass=fai
+220.181.36.12 ansible_become_pass=fai
+
+[serpens:children]
+serpens-rgw
+serpens-osd
+
+[hydra-rgw]
+223.252.209.[9:10] ansible_become_pass=fai
+
+[hydra-mon]
+10.63.200.[19:21] ansible_become_pass=fai
+
+[hydra-osd]
+10.160.209.110 ansible_become_pass=fai
+10.160.209.[5:6] ansible_become_pass=fai
+
+[hydra:children]
+hydra-rgw
+hydra-mon
+hydra-osd
+
+[arae]
+10.63.48.[8:9] ansible_become_pass=fai
+10.63.48.11 ansible_become_pass=fai
+10.63.48.[18:20] ansible_become_pass=fai
+
+
+[osctrl]
+10.160.170.100 ansible_become_pass=fai

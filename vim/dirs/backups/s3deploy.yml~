@@ -1,0 +1,25 @@
+# Text File
+# AUTHOR:   JetChars
+# FILE:     roles/common/tasks/s3deploy.yml
+# ROLE:     TODO (some explanation)
+# CREATED:  2016-11-17 11:08:44
+# MODIFIED: 2016-12-02 17:11:39
+
+- copy: >
+    src="{{ role_path }}/files/confs/99-fastcgi_backlog.conf"
+    dest=/etc/sysctl.d/
+- command: /sbin/sysctl -p /etc/sysctl.d/99-fastcgi_backlog.conf
+- apt: name="{{ item }}" state=present
+  with_items:
+    - libfcgi0ldbl
+    - libcrypto++9
+    - libperl5.20
+    - libxslt1.1
+- copy: >
+    src="{{ role_path }}/files/openresty-1.9.15.1_for_S3.deb"
+    dest=/home/ceph/pkgs
+- apt: deb=/home/ceph/pkgs/openresty-1.9.15.1_for_S3.deb
+- include: "{{ role_path }}/tasks/s3_cgroup.yml"
+  when: ceph_role_name == "radosgw"
+  tags: test
+

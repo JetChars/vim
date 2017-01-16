@@ -1,0 +1,8 @@
+# Text File
+# AUTHOR:   JetChars
+# FILE:     roles/common/vars/mail.yml
+# ROLE:     TODO (some explanation)
+# CREATED:  2016-12-01 16:25:13
+# MODIFIED: 2016-12-01 16:26:16
+
+role_name: "{{ inventory_hostname | regex_replace('^cld-(.*)\d-.*$', '\\1') }}"

@@ -1,0 +1,11 @@
+# Text File
+# AUTHOR:   JetChars
+# FILE:     ceph_conf.yml
+# ROLE:     TODO (some explanation)
+# CREATED:  2016-11-30 12:41:04
+# MODIFIED: 2016-11-30 12:55:45
+
+- copy: >
+    src={{ role_path }}/files/ceph/ceph.{{ group_names[0] }}.ceph_conf
+    dest=/etc/ceph/ceph.conf 
+    mode=0644 owner=root group=root

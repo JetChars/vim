@@ -1,0 +1,15 @@
+# Text File
+# AUTHOR:   JetChars
+# FILE:     roles/common/tasks/s3admin.yml
+# ROLE:     TODO (some explanation)
+# CREATED:  2016-11-15 14:35:39
+# MODIFIED: 2016-11-17 15:31:44
+
+- apt: name={{ item }} state=present
+  with_items: [mysql-server, mysql-common, mysql-client, python-dev, swig, libssl-dev]
+- pip: name={{ item }}
+  with_items: [flask_restful, boto, libase, uwsgi]
+- file: >
+      path=/home/ceph/scripts/ state=directory
+      owner=root group=root mode=0700
+- copy: src=s3admin dest=/home/ceph/scripts

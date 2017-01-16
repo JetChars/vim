@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# AUTHOR:   JetChars
+# FILE:     scripts/nova.sh
+# ROLE:     TODO (some explanation)
+# CREATED:  2016-10-17 03:55:06
+# MODIFIED: 2016-10-17 03:57:34
+
+export OS_TENANT_NAME=admin
+export OS_USERNAME=admin
+export OS_PASSWORD=OpenStackAdmin
+export OS_AUTH_URL=http://localhost:35357/v2.0
+export OS_IMAGE_API_VERSION=2
+export OS_VOLUME_API_VERSION=2
+echo $*

@@ -1,0 +1,14 @@
+# Text File
+# AUTHOR:   JetChars
+# FILE:     ophiuchus.yml
+# ROLE:     TODO (some explanation)
+# CREATED:  2016-10-21 20:29:29
+# MODIFIED: 2016-11-30 14:21:53
+
+# here defines the hosts to be executed
+#- hosts: ophiuchus
+- hosts: cld-osd47-31.i.nease.net
+  become: yes
+  roles:
+    - ceph
+

@@ -1,0 +1,10 @@
+---
+
+- name: mkdir for mon keyring
+  file: path=/home/ceph/var/lib/mon/ceph-{{ mon_name }} state=directory
+
+- name: copy keyring to each mon
+  copy: >
+    src={{ role_path }}/files/keyring.{{ group_names[0] }}.mon
+    dest=/home/ceph/var/lib/mon/ceph-{{ mon_name }}/keyring
+    mode=0644 owner=root group=root
